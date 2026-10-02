@@ -1,0 +1,15 @@
+**/node_modules
+**/dist
+**/build
+**/.vite
+**/.env
+**/.env.*
+!**/.env.example
+**/*adminsdk*.json
+**/serviceAccountKey.json
+.git
+.idea
+.vscode
+**/.DS_Store
+**/__pycache__
+backend
