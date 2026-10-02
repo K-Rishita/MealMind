@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:21.516Z",
+  "latencyMs": 2475,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-friendly-breakfast-skillet\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-coconut-chicken-curry\",\"snack\":\"keto-friendly-egg-salad\"},{\"day\":\"Thursday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Friday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"simple-pesto-chicken-keto-gluten-free\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"paleo-zucchini-fritters\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":4,\"lunch\":15,\"dinner\":18,\"snack\":6},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

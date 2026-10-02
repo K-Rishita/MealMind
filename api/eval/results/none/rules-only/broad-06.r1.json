@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-06",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.032Z",
+  "latencyMs": 2,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"indian-chana-masala-chickpea-curry\",\"dinner\":\"creamy-vegan-tomato-soup\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"low-cost-chicken-and-rice\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Wednesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"high-fiber-vegan-black-bean-soup\",\"dinner\":\"vegetarian-chili-three-bean\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Thursday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"quick-low-cost-chicken-noodle-soup\",\"snack\":\"easy-3-ingredient-peanut-butter-cookies\"},{\"day\":\"Friday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"quick-low-cost-minestrone-soup-italian\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"paleo-sweet-potato-toast-with-avocado\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":6,\"lunch\":15,\"dinner\":13,\"snack\":7}}",
+  "error": null,
+  "modelCalls": 0
+}

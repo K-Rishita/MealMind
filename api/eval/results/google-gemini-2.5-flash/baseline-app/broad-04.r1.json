@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-04",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:34:10.736Z",
+  "latencyMs": 8308,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Breakfast Burritos\",\n      \"lunch\": \"Turkey and Swiss Sandwich\",\n      \"dinner\": \"Chicken Stir-fry\",\n      \"snack\": \"Fruit Smoothie\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Blueberry Pancakes\",\n      \"lunch\": \"Lentil Soup\",\n      \"dinner\": \"Pasta with Marinara Sauce\",\n      \"snack\": \"Greek Yogurt with Berries\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Spinach and Feta Omelette\",\n      \"lunch\": \"Tuna Melt Sandwich\",\n      \"dinner\": \"Vegetable Curry\",\n      \"snack\": \"Energy Balls\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Greek Yogurt with Berries\",\n      \"lunch\": \"Caprese Salad\",\n      \"dinner\": \"Baked Salmon with Asparagus\",\n      \"snack\": \"Fruit Smoothie\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Fruit Smoothie\",\n      \"lunch\": \"Quinoa Salad with Roasted Vegetables\",\n      \"dinner\": \"Sweet Potato and Black Bean Chili\",\n      \"snack\": \"Energy Balls\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 293,
+    "candidatesTokenCount": 311,
+    "totalTokenCount": 2064,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 293
+      }
+    ],
+    "thoughtsTokenCount": 1460,
+    "serviceTier": "standard"
+  }
+}

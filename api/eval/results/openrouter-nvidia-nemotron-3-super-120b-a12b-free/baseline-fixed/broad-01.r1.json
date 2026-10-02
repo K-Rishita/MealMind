@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-01",
+  "run": 1,
+  "model": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+  "startedAt": "2026-10-02T23:18:46.682Z",
+  "latencyMs": 23454,
+  "text": "{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Gluten-Free Keto Pancakes (Cream Cheese Base)\",\n      \"lunch\": \"Keto Chicken and Broccoli Stir-fry\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Simple Pesto Chicken (Keto/Gluten-Free)\",\n      \"dinner\": \"Shrimp Scampi with Zucchini Noodles\",\n      \"snack\": \"Keto Friendly Bacon-Wrapped Asparagus\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Keto Friendly Breakfast Skillet\",\n      \"lunch\": \"Keto Friendly Coconut Chicken Curry\",\n      \"dinner\": \"Keto Cheesy Cauliflower Mash\",\n      \"snack\": \"Keto Friendly Egg Salad\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Keto Friendly Egg Salad\",\n      \"lunch\": \"Paleo Friendly Chicken Fajita Bowl\",\n      \"dinner\": \"Keto Friendly Fathead Pizza Dough\",\n      \"snack\": \"Keto Friendly Low-Carb Chili\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour)\",\n      \"lunch\": \"Keto Friendly Chicken Stir-fry with Shirataki Noodles\",\n      \"dinner\": \"Paleo Grilled Pork Chops with Herbs\",\n      \"snack\": \"Keto Friendly Egg Salad\"\n    }\n  ]\n}",
+  "error": null
+}

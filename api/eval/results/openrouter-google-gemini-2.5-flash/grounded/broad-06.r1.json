@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-06",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:03.206Z",
+  "latencyMs": 1578,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"indian-chana-masala-chickpea-curry\",\"dinner\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"low-cost-chicken-and-rice\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Wednesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"high-fiber-vegan-black-bean-soup\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Thursday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"low-cost-chicken-and-rice\",\"dinner\":\"vegetarian-chili-three-bean\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Friday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"high-fiber-vegan-black-bean-soup\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"vegan-overnight-chia-seed-pudding\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":6,\"lunch\":15,\"dinner\":13,\"snack\":7},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-04",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:22.307Z",
+  "latencyMs": 3353,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"snack\":\"thai-mango-sticky-rice-khao-niao-mamuang\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"pescatarian-tuna-poke-bowl\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"low-calorie-chicken-lettuce-wraps-asian\",\"dinner\":\"paleo-friendly-chicken-fajita-bowl\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"paleo-friendly-chicken-skewers-with-veggies\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"vegan-red-thai-curry-vegetable\",\"dinner\":\"low-cost-chicken-and-rice\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"fallback\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[\"Monday has the same recipe for lunch and dinner.\"]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":42,\"dinner\":42,\"snack\":17},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-09",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:16.095Z",
+  "latencyMs": 1149,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Tuesday\",\"breakfast\":\"gluten-free-banana-pancakes\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"easy-3-ingredient-peanut-butter-cookies\"},{\"day\":\"Wednesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-buttered-noodles\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"keto-friendly-egg-salad\"},{\"day\":\"Friday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":17,\"dinner\":11,\"snack\":11},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

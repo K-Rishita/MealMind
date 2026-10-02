@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "diet-05",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:49.504Z",
+  "latencyMs": 2412,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"Quick Low-Cost Minestrone Soup (Italian)\",\n      \"dinner\": \"Simple Low-Cost Pasta Aglio e Olio\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip) with vegetable sticks\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Vegan Red Lentil Soup (Turkish Mercimek Çorbası)\",\n      \"dinner\": \"Vegan Roasted Red Pepper Pasta Sauce with Pasta\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Vegetarian Chili (Three Bean)\",\n      \"dinner\": \"French Ratatouille (Vegan/Gluten-Free) with Simple Indian Basmati Rice\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican) with tortilla chips\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Vegan Overnight Chia Seed Pudding\",\n      \"lunch\": \"Creamy Vegan Tomato Soup\",\n      \"dinner\": \"Dal Tadka (Yellow Lentil Curry) with Simple Indian Basmati Rice\",\n      \"snack\": \"Vegan Chocolate Chip Cookies (Dairy-Free)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Simple Green Smoothie (Vegan/Gluten-Free)\",\n      \"lunch\": \"High-Fiber Vegan Black Bean Soup\",\n      \"dinner\": \"Vegan Mushroom Stroganoff (Comfort Food) with Pasta\",\n      \"snack\": \"Dairy-Free Chocolate Ice Cream (Vegan)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

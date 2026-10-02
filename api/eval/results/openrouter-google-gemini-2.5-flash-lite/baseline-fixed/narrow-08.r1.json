@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "narrow-08",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:42.085Z",
+  "latencyMs": 1604,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Indian Samosa (Vegetarian Appetizer)\",\n      \"dinner\": \"Homemade Gnocchi with Sage Butter Sauce (Italian)\",\n      \"snack\": \"Keto Friendly Keto Bread (Almond Flour) with a side of berries\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour) with jam\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Classic French Soufflé au Fromage (Advanced)\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Indian Samosa (Vegetarian Appetizer)\",\n      \"dinner\": \"Homemade Gnocchi with Sage Butter Sauce (Italian)\",\n      \"snack\": \"Toast and Jam\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour) with a light spread\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Classic French Soufflé au Fromage (Advanced)\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Indian Samosa (Vegetarian Appetizer)\",\n      \"dinner\": \"Homemade Gnocchi with Sage Butter Sauce (Italian)\",\n      \"snack\": \"Keto Friendly Keto Bread (Almond Flour) with avocado\"\n    }\n  ]\n}\n```",
+  "error": null
+}

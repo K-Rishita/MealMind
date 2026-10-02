@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-04",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:12.028Z",
+  "latencyMs": 1705,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"low-calorie-chicken-lettuce-wraps-asian\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"low-calorie-chicken-lettuce-wraps-asian\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"paleo-friendly-chicken-skewers-with-veggies\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"classic-hummus-middle-eastern-dip\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":42,\"dinner\":42,\"snack\":17},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

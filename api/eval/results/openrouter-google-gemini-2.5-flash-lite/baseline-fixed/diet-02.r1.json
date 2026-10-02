@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "diet-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:47.716Z",
+  "latencyMs": 1787,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Gluten-Free Banana Pancakes\",\n      \"lunch\": \"Mediterranean Quinoa Salad\",\n      \"dinner\": \"Keto Friendly Coconut Chicken Curry\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Vegan Red Lentil Soup (Turkish Mercimek Çorbası)\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"dinner\": \"Vegan Lentil Shepherd's Pie (British/Irish)\",\n      \"snack\": \"Dairy-Free Chocolate Ice Cream (Vegan)\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Gluten-Free Keto Pancakes (Cream Cheese Base)\",\n      \"lunch\": \"Creamy Vegan Tomato Soup\",\n      \"dinner\": \"Paleo Friendly Chicken Fajita Bowl\",\n      \"snack\": \"Easy 3-Ingredient Peanut Butter Cookies\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Paleo Sweet Potato Toast with Avocado\",\n      \"lunch\": \"Indian Chana Masala (Chickpea Curry)\",\n      \"dinner\": \"Shrimp Scampi with Zucchini Noodles\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "infeasible-03",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.058Z",
+  "latencyMs": 1,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\",\"lunch\",\"dinner\"],\"suggestions\":[{\"field\":\"skill\",\"label\":\"Allow any skill level\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":0,\"dinner\":0,\"snack\":0}}",
+  "error": null,
+  "modelCalls": 0
+}

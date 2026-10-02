@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-09",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:04.784Z",
+  "latencyMs": 1766,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"keto-friendly-egg-salad\"},{\"day\":\"Friday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"vegan-red-thai-curry-vegetable\",\"dinner\":\"indian-chana-masala-chickpea-curry\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":17,\"dinner\":11,\"snack\":11},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

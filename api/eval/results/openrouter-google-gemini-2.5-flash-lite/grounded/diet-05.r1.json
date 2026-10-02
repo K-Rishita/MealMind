@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-05",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:23.992Z",
+  "latencyMs": 3281,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-pasta-aglio-e-olio\",\"dinner\":\"vegan-mushroom-stroganoff-comfort-food\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"quick-low-cost-minestrone-soup-italian\",\"dinner\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"french-ratatouille-vegan-gluten-free\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"vegan-mushroom-stroganoff-comfort-food\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":7,\"lunch\":17,\"dinner\":16,\"snack\":11},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

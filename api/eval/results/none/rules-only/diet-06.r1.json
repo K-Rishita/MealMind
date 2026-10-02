@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "diet-06",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.069Z",
+  "latencyMs": 5,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"pescatarian-tuna-poke-bowl\",\"snack\":\"thai-mango-sticky-rice-khao-niao-mamuang\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"vegan-mushroom-stroganoff-comfort-food\",\"dinner\":\"pescatarian-shrimp-pad-thai-thai-noodles\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"advanced-sushi-rolls-japanese\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"classic-hummus-middle-eastern-dip\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":13,\"lunch\":40,\"dinner\":31,\"snack\":28}}",
+  "error": null,
+  "modelCalls": 0
+}

@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-02",
+  "run": 2,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:33:08.127Z",
+  "latencyMs": 17714,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Lentil Soup\",\n      \"dinner\": \"Chickpea Curry\",\n      \"snack\": \"Hummus\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Quick Oats\",\n      \"lunch\": \"Chickpea Salad\",\n      \"dinner\": \"Lentil Stew\",\n      \"snack\": \"Garlic Bread\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Yogurt with Fruit\",\n      \"lunch\": \"Tomato and Garlic Soup\",\n      \"dinner\": \"Spicy Chickpea Stir-fry\",\n      \"snack\": \"Roasted Tomatoes\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Smoothie\",\n      \"lunch\": \"Lentil and Tomato Salad\",\n      \"dinner\": \"Stuffed Tomatoes\",\n      \"snack\": \"Chickpea Fritters\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Pancakes\",\n      \"lunch\": \"Tomato and Onion Salad\",\n      \"dinner\": \"Creamy Lentil Dal\",\n      \"snack\": \"Onion Rings\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 323,
+    "candidatesTokenCount": 305,
+    "totalTokenCount": 3988,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 323
+      }
+    ],
+    "thoughtsTokenCount": 3360,
+    "serviceTier": "standard"
+  }
+}

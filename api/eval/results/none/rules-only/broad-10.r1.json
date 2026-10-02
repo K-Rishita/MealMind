@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-10",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.037Z",
+  "latencyMs": 6,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"simple-low-cost-pasta-aglio-e-olio\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"simple-low-cost-buttered-noodles\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":13,\"lunch\":28,\"dinner\":20,\"snack\":27}}",
+  "error": null,
+  "modelCalls": 0
+}

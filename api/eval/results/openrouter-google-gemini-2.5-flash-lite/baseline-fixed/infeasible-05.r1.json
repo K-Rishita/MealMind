@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "infeasible-05",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:45.427Z",
+  "latencyMs": 2287,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Olive Oil Pasta with Garlic\",\n      \"snack\": \"Fruit\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Pasta Aglio e Olio\",\n      \"snack\": \"Nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Fruit\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Spaghetti with Olive Oil and Chili Flakes\",\n      \"snack\": \"Rice Cakes\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Pasta al Limone (Dairy-Free)\",\n      \"snack\": \"Vegetable Sticks\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Fruit\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Simple Pasta with Garlic and Olive Oil\",\n      \"snack\": \"Popcorn\"\n    }\n  ]\n}\n```",
+  "error": null
+}

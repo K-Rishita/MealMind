@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "narrow-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:39.313Z",
+  "latencyMs": 1542,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Pescatarian Tuna Poke Bowl\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Fruit Salad\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Yogurt with Berries\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Pescatarian Shrimp and Grits (Southern American)\",\n      \"snack\": \"Nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Cereal\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Advanced Sushi Rolls (Japanese)\",\n      \"snack\": \"Cheese and Crackers\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Oatmeal\",\n      \"lunch\": \"Pescatarian Tuna Poke Bowl\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Dark Chocolate\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Pastry\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Pescatarian Shrimp and Grits (Southern American)\",\n      \"snack\": \"Classic Tiramisu (Italian Dessert)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "diet-03",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.062Z",
+  "latencyMs": 4,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-friendly-breakfast-skillet\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"paleo-zucchini-fritters\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"dinner\":\"classic-french-beef-tartare-high-skill\",\"snack\":\"pescatarian-shrimp-ceviche-peruvian-mexican\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":4,\"lunch\":15,\"dinner\":18,\"snack\":6}}",
+  "error": null,
+  "modelCalls": 0
+}

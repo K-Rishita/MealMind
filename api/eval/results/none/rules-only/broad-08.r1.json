@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-08",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.034Z",
+  "latencyMs": 2,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"pescatarian-garlic-butter-steamed-mussels\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"intermediate-tofu-katsu-curry-japanese\",\"dinner\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"snack\":\"simple-panna-cotta-italian-dessert\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"pescatarian-shrimp-ceviche-peruvian-mexican\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":2,\"lunch\":7,\"dinner\":7,\"snack\":8}}",
+  "error": null,
+  "modelCalls": 0
+}

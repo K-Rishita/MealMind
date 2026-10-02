@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-13",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:08.427Z",
+  "latencyMs": 1908,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"low-calorie-chicken-lettuce-wraps-asian\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"low-cost-chicken-and-rice\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"keto-friendly-egg-salad\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"gluten-free-chicken-and-vegetable-curry\",\"dinner\":\"pescatarian-tuna-poke-bowl\",\"snack\":\"thai-mango-sticky-rice-khao-niao-mamuang\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":15,\"lunch\":63,\"dinner\":63,\"snack\":29},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

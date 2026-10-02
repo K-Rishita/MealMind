@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-14",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.048Z",
+  "latencyMs": 2,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\"],\"suggestions\":[{\"field\":\"time\",\"label\":\"Allow any cooking time\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":18,\"dinner\":17,\"snack\":1}}",
+  "error": null,
+  "modelCalls": 0
+}

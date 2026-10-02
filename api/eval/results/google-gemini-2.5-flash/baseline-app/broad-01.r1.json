@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-01",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:31:31.330Z",
+  "latencyMs": 14913,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Oatmeal with Berries\",\n      \"lunch\": \"Lentil Soup with Crusty Bread\",\n      \"dinner\": \"Chickpea and Spinach Curry\",\n      \"snack\": \"Apple Slices with Peanut Butter\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Scrambled Eggs with Spinach\",\n      \"lunch\": \"Chickpea Salad Sandwich\",\n      \"dinner\": \"Vegetarian Chili\",\n      \"snack\": \"Greek Yogurt\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Yogurt Parfait\",\n      \"lunch\": \"Classic Tomato Soup\",\n      \"dinner\": \"Lentil Shepherd's Pie\",\n      \"snack\": \"Carrot Sticks with Hummus\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Fruit Smoothie\",\n      \"lunch\": \"Hummus and Veggie Wrap\",\n      \"dinner\": \"Shakshuka\",\n      \"snack\": \"Mixed Nuts\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast with Avocado\",\n      \"lunch\": \"Quinoa Salad with Roasted Vegetables\",\n      \"dinner\": \"Spaghetti Bolognese\",\n      \"snack\": \"Fruit Salad\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 527,
+    "candidatesTokenCount": 322,
+    "totalTokenCount": 3553,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 527
+      }
+    ],
+    "thoughtsTokenCount": 2704,
+    "serviceTier": "standard"
+  }
+}

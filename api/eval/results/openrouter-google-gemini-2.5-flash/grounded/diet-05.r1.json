@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-05",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:12.771Z",
+  "latencyMs": 1780,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-pasta-aglio-e-olio\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"simple-low-cost-pasta-aglio-e-olio\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"quick-low-cost-minestrone-soup-italian\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"quick-vegan-black-bean-burgers\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":7,\"lunch\":17,\"dinner\":16,\"snack\":11},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

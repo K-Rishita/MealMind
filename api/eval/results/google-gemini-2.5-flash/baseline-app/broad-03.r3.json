@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-03",
+  "run": 3,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:34:10.552Z",
+  "latencyMs": 8676,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Scrambled Eggs with Toast\",\n      \"lunch\": \"Grilled Cheese Sandwich\",\n      \"dinner\": \"Spaghetti Aglio e Olio\",\n      \"snack\": \"Apple\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Oatmeal with Berries\",\n      \"lunch\": \"Lentil Soup\",\n      \"dinner\": \"Sheet Pan Sausage and Peppers\",\n      \"snack\": \"Yogurt\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Tuna Melt\",\n      \"dinner\": \"Simple Tomato Pasta\",\n      \"snack\": \"Banana\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Cereal with Milk\",\n      \"lunch\": \"Chicken Caesar Salad\",\n      \"dinner\": \"Easy Chicken Stir-Fry\",\n      \"snack\": \"Crackers with Cheese\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Hard-boiled Eggs\",\n      \"lunch\": \"Minestrone Soup\",\n      \"dinner\": \"Mac and Cheese\",\n      \"snack\": \"Orange\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 356,
+    "candidatesTokenCount": 305,
+    "totalTokenCount": 2375,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 356
+      }
+    ],
+    "thoughtsTokenCount": 1714,
+    "serviceTier": "standard"
+  }
+}

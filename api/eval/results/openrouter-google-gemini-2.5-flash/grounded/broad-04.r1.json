@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-04",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:02.821Z",
+  "latencyMs": 1822,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-cauliflower-fried-rice\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"paleo-friendly-chicken-fajita-bowl\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":1,\"lunch\":8,\"dinner\":11,\"snack\":2},\"limitedSlots\":[\"breakfast\"],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

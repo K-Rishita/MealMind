@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { createApp } from './app.js';
-import { fallbackPlan, findCandidates } from './planner/grounded.js';
+import { encodePlan, fallbackPlan, findCandidates } from './planner/grounded.js';
 import type { JsonModel, TextModel } from './planner/llm.js';
 import { loadRecipes } from './planner/recipes.js';
 import type { Services, UserContext } from './services.js';
@@ -75,7 +75,7 @@ describe('POST /api/meal-plan', () => {
 
   it('uses the model when configured', async () => {
     const c = findCandidates(recipes, { cost: 'all', time: 'all', skill: 'all', diet: 'none', pantry: [] });
-    const model: JsonModel = { name: 'fake', generateJson: async () => JSON.stringify({ days: fallbackPlan(c) }) };
+    const model: JsonModel = { name: 'fake', generateJson: async () => encodePlan(fallbackPlan(c), c) };
     const app = createApp({ services: fakeServices().services, planModel: model });
     const body = await (await post(app, '/api/meal-plan', { cost: 'all', time: 'all', skill: 'all' })).json();
     expect(body.source).toBe('model');

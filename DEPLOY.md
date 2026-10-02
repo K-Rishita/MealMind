@@ -37,11 +37,12 @@ the API serves the public Supabase URL and anon key to the browser at runtime (`
 | Container port | `8080` |
 | Max instances | `2` (caps cost) |
 | Env vars | `SUPABASE_URL`, `SUPABASE_ANON_KEY` |
-| Secrets | `GEMINI_API_KEY` ← `gemini-api-key:latest` |
+| Secrets | `GEMINI_API_KEY` ← `gemini-api-key:latest`, and optionally `OPENROUTER_API_KEY` ← its own secret |
 
 Every push to `main` then rebuilds and redeploys.
 
-Optional env vars: `PLANNER_MODE=rules` (plan without calling Gemini),
+Optional env vars: `LLM_MODELS` (models to try in order, see `api/.env.example`),
+`PLANNER_MODE=rules` (plan without calling any model),
 `AI_REQUESTS_PER_HOUR` (per-user limit, default 30).
 
 ## 4. After the first deploy

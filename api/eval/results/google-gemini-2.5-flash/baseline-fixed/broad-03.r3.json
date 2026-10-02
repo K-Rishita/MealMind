@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-03",
+  "run": 3,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:34:12.290Z",
+  "latencyMs": 13152,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Vegan Red Lentil Soup (Turkish Mercimek Çorbası)\",\n      \"dinner\": \"Simple Low-Cost Black Beans and Rice\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"High-Fiber Vegan Black Bean Soup\",\n      \"dinner\": \"Dal Tadka (Yellow Lentil Curry) with Simple Indian Basmati Rice\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Vegan Overnight Chia Seed Pudding\",\n      \"lunch\": \"Creamy Vegan Tomato Soup\",\n      \"dinner\": \"Homemade Marinara Sauce (Italian Base) with Pasta\",\n      \"snack\": \"Paleo Sweet Potato Toast with Avocado\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Quick Low-Cost Minestrone Soup (Italian)\",\n      \"dinner\": \"Vegetarian Chili (Three Bean)\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Vegan Baked Potatoes with Hummus and Chives\",\n      \"dinner\": \"Indian Chana Masala (Chickpea Curry) with Simple Indian Basmati Rice\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 639,
+    "candidatesTokenCount": 410,
+    "totalTokenCount": 3456,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 639
+      }
+    ],
+    "thoughtsTokenCount": 2407,
+    "serviceTier": "standard"
+  }
+}

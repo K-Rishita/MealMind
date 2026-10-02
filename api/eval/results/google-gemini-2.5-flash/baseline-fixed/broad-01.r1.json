@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-01",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:31:46.806Z",
+  "latencyMs": 12273,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Keto Friendly Breakfast Skillet\",\n      \"lunch\": \"Keto Friendly Egg Salad\",\n      \"dinner\": \"Keto Chicken and Broccoli Stir-fry\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Simple Pesto Chicken (Keto/Gluten-Free)\",\n      \"dinner\": \"Keto Friendly Low-Carb Chili\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Gluten-Free Keto Pancakes (Cream Cheese Base)\",\n      \"lunch\": \"Keto Friendly Chicken Pot Pie Filling (No Crust)\",\n      \"dinner\": \"Keto Friendly Coconut Chicken Curry\",\n      \"snack\": \"Keto Friendly Bacon-Wrapped Asparagus\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Keto Friendly Breakfast Skillet\",\n      \"lunch\": \"Keto Friendly Egg Salad\",\n      \"dinner\": \"Keto Friendly Chicken Parmesan (No Breadcrumbs)\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Keto Friendly Chicken Stir-fry with Shirataki Noodles\",\n      \"dinner\": \"Shrimp Scampi with Zucchini Noodles\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 786,
+    "candidatesTokenCount": 386,
+    "totalTokenCount": 3481,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 786
+      }
+    ],
+    "thoughtsTokenCount": 2309,
+    "serviceTier": "standard"
+  }
+}

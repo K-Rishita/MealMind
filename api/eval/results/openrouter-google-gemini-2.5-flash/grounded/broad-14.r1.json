@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-14",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:09.061Z",
+  "latencyMs": 5,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\"],\"suggestions\":[{\"field\":\"time\",\"label\":\"Allow any cooking time\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":18,\"dinner\":17,\"snack\":1}}",
+  "error": null,
+  "modelCalls": 0
+}

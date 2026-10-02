@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-05",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:13.548Z",
+  "latencyMs": 3055,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Tuesday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"paleo-friendly-chicken-fajita-bowl\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Wednesday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"paleo-friendly-chicken-skewers-with-veggies\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"},{\"day\":\"Thursday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"spicy-thai-beef-salad-yum-nua\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"keto-friendly-coconut-chicken-curry\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"fallback\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]}],\"candidateCounts\":{\"breakfast\":1,\"lunch\":10,\"dinner\":11,\"snack\":3},\"limitedSlots\":[\"breakfast\"],\"suggestions\":[{\"field\":\"cost\",\"label\":\"Allow any budget\"},{\"field\":\"diet\",\"label\":\"Remove the diet restriction\"}]}",
+  "error": null,
+  "modelCalls": 2
+}

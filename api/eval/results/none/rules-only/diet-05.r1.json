@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "diet-05",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.067Z",
+  "latencyMs": 5,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-pasta-aglio-e-olio\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"vegan-mushroom-stroganoff-comfort-food\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"french-ratatouille-vegan-gluten-free\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Thursday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"vegan-baked-potatoes-with-hummus-and-chives\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Friday\",\"breakfast\":\"paleo-sweet-potato-toast-with-avocado\",\"lunch\":\"quick-vegan-black-bean-burgers\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":7,\"lunch\":17,\"dinner\":16,\"snack\":11}}",
+  "error": null,
+  "modelCalls": 0
+}

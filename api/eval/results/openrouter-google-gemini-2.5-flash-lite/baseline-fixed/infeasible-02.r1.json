@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "infeasible-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:43.763Z",
+  "latencyMs": 1663,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Scrambled Eggs with Cheese\",\n      \"lunch\": \"Grilled Chicken Salad\",\n      \"dinner\": \"Chicken Stir-fry with Broccoli and Soy Sauce\",\n      \"snack\": \"Handful of Almonds\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Avocado Smoothie\",\n      \"lunch\": \"Leftover Chicken Stir-fry\",\n      \"dinner\": \"Baked Chicken Breast with Roasted Broccoli\",\n      \"snack\": \"Celery Sticks with Cream Cheese\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Omelet with Spinach\",\n      \"lunch\": \"Chicken and Broccoli Soup\",\n      \"dinner\": \"Chicken Fajita Bowls (no rice, extra veggies)\",\n      \"snack\": \"Hard-boiled Egg\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Bulletproof Coffee\",\n      \"lunch\": \"Leftover Chicken Fajita Bowls\",\n      \"dinner\": \"Lemon Herb Roasted Chicken with Broccoli\",\n      \"snack\": \"Cheese Cubes\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Chia Seed Pudding\",\n      \"lunch\": \"Chicken Caesar Salad (keto dressing)\",\n      \"dinner\": \"Garlic Butter Chicken with Steamed Broccoli\",\n      \"snack\": \"Pecans\"\n    }\n  ]\n}\n```",
+  "error": null
+}

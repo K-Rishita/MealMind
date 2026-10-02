@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-12",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:08.244Z",
+  "latencyMs": 1847,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"pescatarian-tuna-salad-classic-deli-style\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"pescatarian-fish-tacos-with-cabbage-slaw\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":15,\"dinner\":9,\"snack\":10},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

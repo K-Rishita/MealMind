@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "diet-06",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:49.930Z",
+  "latencyMs": 1576,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Simple Tuna Melt Sandwich (Pescatarian)\",\n      \"dinner\": \"Pescatarian Tuna Poke Bowl\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"Low-Cost Tuna Pasta Salad (Pescatarian)\",\n      \"dinner\": \"Pescatarian Fish Tacos with Cabbage Slaw\",\n      \"snack\": \"Easy 3-Ingredient Peanut Butter Cookies\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Gluten-Free Banana Pancakes\",\n      \"lunch\": \"Pescatarian Tuna Salad (Classic Deli Style)\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip) with Veggies\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Simple Tuna Melt Sandwich (Pescatarian)\",\n      \"dinner\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"snack\": \"Vegan Chocolate Avocado Mousse\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Gluten-Free Keto Pancakes (Cream Cheese Base)\",\n      \"lunch\": \"Pescatarian Tuna Poke Bowl\",\n      \"dinner\": \"Pescatarian Garlic Butter Steamed Mussels\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

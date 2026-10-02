@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-04",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:34:13.207Z",
+  "latencyMs": 6946,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Keto Friendly Low-Carb Chili\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Paleo Salmon Burgers\",\n      \"dinner\": \"Keto Chicken and Broccoli Stir-fry\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Paleo Friendly Chicken Fajita Bowl\",\n      \"dinner\": \"Shrimp Scampi with Zucchini Noodles\",\n      \"snack\": \"Keto Cheesy Cauliflower Mash\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Simple Pesto Chicken (Keto/Gluten-Free)\",\n      \"dinner\": \"Paleo Grilled Pork Chops with Herbs\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Keto Friendly Chicken Pot Pie Filling (No Crust)\",\n      \"dinner\": \"Paleo Friendly Chicken Skewers with Veggies\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 502,
+    "candidatesTokenCount": 378,
+    "totalTokenCount": 2019,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 502
+      }
+    ],
+    "thoughtsTokenCount": 1139,
+    "serviceTier": "standard"
+  }
+}

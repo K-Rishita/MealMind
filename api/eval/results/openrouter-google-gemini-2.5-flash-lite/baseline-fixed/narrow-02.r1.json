@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "narrow-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:39.226Z",
+  "latencyMs": 1452,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Quick Salad\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Advanced Sushi Rolls (Japanese)\",\n      \"snack\": \"Toast and Jam\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Quick Salad\",\n      \"lunch\": \"Advanced Sushi Rolls (Japanese)\",\n      \"dinner\": \"Advanced Japanese Agedashi Tofu\",\n      \"snack\": \"Toast and Jam\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"dinner\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"snack\": \"Quick Salad\"\n    }\n  ]\n}\n```",
+  "error": null
+}

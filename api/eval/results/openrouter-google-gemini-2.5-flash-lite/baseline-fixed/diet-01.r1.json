@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "diet-01",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:46.896Z",
+  "latencyMs": 2253,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Paleo Sweet Potato Toast with Avocado\",\n      \"lunch\": \"Simple Green Smoothie (Vegan/Gluten-Free)\",\n      \"dinner\": \"Paleo Friendly Chicken Fajita Bowl\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Vegan Overnight Chia Seed Pudding\",\n      \"lunch\": \"Paleo Cauliflower Fried Rice\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Paleo Chicken and Sweet Potato Hash\",\n      \"lunch\": \"French Ratatouille (Vegan/Gluten-Free)\",\n      \"dinner\": \"Keto Friendly Coconut Chicken Curry\",\n      \"snack\": \"Keto Friendly Bacon-Wrapped Asparagus\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Paleo Sweet Potato Toast with Avocado\",\n      \"lunch\": \"Paleo Zucchini Fritters\",\n      \"dinner\": \"Paleo Friendly Chicken Skewers with Veggies\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Simple Green Smoothie (Vegan/Gluten-Free)\",\n      \"lunch\": \"Paleo Salmon Burgers\",\n      \"dinner\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"snack\": \"Toast and Jam\"\n    }\n  ]\n}\n```",
+  "error": null
+}
