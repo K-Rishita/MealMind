@@ -36,6 +36,13 @@ describe('api', () => {
     expect(await res.json()).toEqual({ status: 'ok' });
   });
 
+  it('serves public runtime config for the browser', async () => {
+    const app = createApp({ publicConfig: { supabaseUrl: 'https://x.supabase.co', supabaseAnonKey: 'anon' } });
+    const res = await app.request('/config.js');
+    expect(res.headers.get('content-type')).toContain('javascript');
+    expect(await res.text()).toBe('window.__MEALMIND_CONFIG__ = {"supabaseUrl":"https://x.supabase.co","supabaseAnonKey":"anon"};\n');
+  });
+
   it('returns JSON 404 for unknown API routes', async () => {
     const res = await createApp().request('/api/nope');
     expect(res.status).toBe(404);

@@ -6,9 +6,7 @@ WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend/ ./
-# Vite inlines VITE_* values at build time. These are public client config, not secrets.
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_ANON_KEY
+# No build args: Supabase config is served at runtime by the API (/config.js).
 RUN npm run build
 
 # ---- 2. Compile the API ----

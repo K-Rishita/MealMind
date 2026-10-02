@@ -20,6 +20,6 @@
       port: 3000,
       open: true,
       // In development the API runs separately (npm run dev in api/); in production it serves this app.
-      proxy: { '/api': 'http://localhost:8080' },
+      proxy: { '/api': 'http://localhost:8080', '/config.js': 'http://localhost:8080' },
     },
   });

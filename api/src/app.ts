@@ -12,6 +12,8 @@ export type AppOptions = {
   planModel?: JsonModel; // undefined = rules-only planning (no AI calls)
   textModel?: TextModel; // undefined = Recipe Generator disabled
   aiRequestsPerHour?: number;
+  /** Public browser config served as /config.js, so one image works in any environment. */
+  publicConfig?: { supabaseUrl: string; supabaseAnonKey: string };
 };
 
 const COSTS = ['all', 'low', 'medium', 'high'];
@@ -51,11 +53,18 @@ function pick(value: unknown, allowed: string[], fallback = 'all'): string | nul
  * Builds the HTTP app. API routes live under /api; everything else is the
  * built React frontend, with unknown paths falling back to index.html.
  */
-export function createApp({ staticDir, services, planModel, textModel, aiRequestsPerHour = 30 }: AppOptions = {}) {
+export function createApp({ staticDir, services, planModel, textModel, aiRequestsPerHour = 30, publicConfig }: AppOptions = {}) {
   const app = new Hono<{ Variables: { user: UserContext; token: string } }>();
   const allow = rateLimiter(aiRequestsPerHour);
 
   app.get('/api/health', (c) => c.json({ status: 'ok' }));
+
+  // Only public values (the anon key is designed to be exposed; RLS protects the data).
+  app.get('/config.js', (c) => {
+    c.header('Content-Type', 'application/javascript; charset=utf-8');
+    c.header('Cache-Control', 'no-store');
+    return c.body(publicConfig ? `window.__MEALMIND_CONFIG__ = ${JSON.stringify(publicConfig)};\n` : '// no runtime config\n');
+  });
 
   const requireUser = async (c: Context, next: () => Promise<void>) => {
     if (!services) return c.json({ error: 'Server is missing Supabase configuration' }, 503);
