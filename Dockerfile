@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- 1. Build the React frontend ----
-FROM node:20-alpine AS frontend
+FROM node:22-alpine AS frontend
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
@@ -17,7 +17,7 @@ ARG VITE_FIREBASE_APP_ID
 RUN npm run build
 
 # ---- 2. Compile the API ----
-FROM node:20-alpine AS api
+FROM node:22-alpine AS api
 WORKDIR /app/api
 COPY api/package.json api/package-lock.json ./
 RUN npm ci
@@ -25,7 +25,7 @@ COPY api/ ./
 RUN npm run build
 
 # ---- 3. Small runtime image ----
-FROM node:20-alpine AS runtime
+FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production \
     PORT=8080 \
