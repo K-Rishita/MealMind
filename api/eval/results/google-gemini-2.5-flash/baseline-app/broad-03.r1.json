@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-03",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:33:25.219Z",
+  "latencyMs": 10712,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Avocado Toast\",\n      \"lunch\": \"Tuna Salad Sandwich\",\n      \"dinner\": \"Spaghetti Bolognese\",\n      \"snack\": \"Fruit Smoothie\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Scrambled Eggs\",\n      \"lunch\": \"Lentil Soup\",\n      \"dinner\": \"Vegetable Stir-fry\",\n      \"snack\": \"Greek Yogurt with Honey\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Oatmeal with Berries\",\n      \"lunch\": \"Grilled Cheese with Tomato Soup\",\n      \"dinner\": \"Chicken Alfredo\",\n      \"snack\": \"Hard-boiled Egg\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Breakfast Burrito\",\n      \"lunch\": \"Chicken Caesar Salad\",\n      \"dinner\": \"Pasta Primavera\",\n      \"snack\": \"Edamame\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Pancakes\",\n      \"lunch\": \"Quinoa Salad\",\n      \"dinner\": \"Meatloaf\",\n      \"snack\": \"Rice Cakes with Peanut Butter\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 356,
+    "candidatesTokenCount": 303,
+    "totalTokenCount": 2665,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 356
+      }
+    ],
+    "thoughtsTokenCount": 2006,
+    "serviceTier": "standard"
+  }
+}

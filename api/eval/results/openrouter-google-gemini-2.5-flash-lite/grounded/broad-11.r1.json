@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-11",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:17.245Z",
+  "latencyMs": 2678,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"indian-chana-masala-chickpea-curry\",\"dinner\":\"creamy-vegan-tomato-soup\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-friendly-breakfast-skillet\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"low-cost-chicken-and-rice\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"high-fiber-vegan-black-bean-soup\",\"dinner\":\"keto-friendly-low-carb-chili\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"paleo-friendly-chicken-chili\",\"dinner\":\"vegetarian-chili-three-bean\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Friday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"low-cost-easy-chili-american-comfort-food\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"fallback\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\"]},{\"errors\":[\"\\\"classic-hummus-middle-eastern-dip\\\" is used 2 times for snack; the limit is 1.\",\"Wednesday has the same recipe for lunch and dinner.\"]}],\"candidateCounts\":{\"breakfast\":10,\"lunch\":35,\"dinner\":30,\"snack\":12},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

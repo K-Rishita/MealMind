@@ -1,0 +1,49 @@
+{
+  "system": "grounded",
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "calls": 40,
+  "cases": 40,
+  "apiErrors": 0,
+  "metrics": {
+    "validPlanRate": 100,
+    "correctDaysRate": 100,
+    "mainMealsNotInDatabase": 0,
+    "mainMealsViolatingConstraints": 0,
+    "mainMealsGroundedAndCompliant": 100,
+    "snacksInDatabase": 100,
+    "fullyValidPlanRate_plannableCases": 100,
+    "impossibleRequestsHandled": 100,
+    "injectionCasesFullyValid": 100,
+    "plansWithRecipeRepeatedOver2x": 33.3,
+    "mainMealsSuitForSlot": 100,
+    "pantryItemsUsedInPlan": 77.2,
+    "distinctMainRecipesPerPlan": 81.4,
+    "medianMainMealMinutes": 25,
+    "modelValidFirstTry": 20.8,
+    "modelValidAfterRetry": 62.5,
+    "neededRuleFallback": 37.5,
+    "latencyP50Ms": 2509,
+    "latencyP95Ms": 3281
+  },
+  "violationsOfMainMeals": {
+    "cost": 0,
+    "time": 0,
+    "skill": 0,
+    "diet": 0
+  },
+  "sources": {
+    "fallback": 9,
+    "model-retry": 10,
+    "model": 5
+  },
+  "modelCalls": 43,
+  "counts": {
+    "parsed": 24,
+    "mainEntries": 360,
+    "mainInDb": 360,
+    "mainCompliant": 360,
+    "plannableRuns": 24,
+    "unplannableRuns": 16,
+    "injectionRuns": 4
+  }
+}

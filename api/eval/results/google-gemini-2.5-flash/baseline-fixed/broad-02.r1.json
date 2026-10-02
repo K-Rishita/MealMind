@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-02",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:31:46.807Z",
+  "latencyMs": 14085,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Authentic Pho (Vietnamese Noodle Soup)\",\n      \"dinner\": \"Classic French Beef Wellington\",\n      \"snack\": \"Classic Tiramisu (Italian Dessert)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour)\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Classic Beef Bourguignon\",\n      \"snack\": \"French Crème Brûlée (Advanced)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Classic French Crêpes Suzette (Advanced)\",\n      \"lunch\": \"Advanced Beef Consommé (Clear Soup)\",\n      \"dinner\": \"Advanced French Duck Confit (Traditional)\",\n      \"snack\": \"Advanced Chocolate Mousse (Classic French)\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Classic French Soufflé au Fromage (Advanced)\",\n      \"dinner\": \"Advanced Beef Stroganoff (Russian/American)\",\n      \"snack\": \"Advanced Chocolate Lava Cakes (Moulleux au Chocolat)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Classic New York Style Cheesecake\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 664,
+    "candidatesTokenCount": 375,
+    "totalTokenCount": 3745,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 664
+      }
+    ],
+    "thoughtsTokenCount": 2706,
+    "serviceTier": "standard"
+  }
+}

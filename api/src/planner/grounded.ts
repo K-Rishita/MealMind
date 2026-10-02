@@ -200,37 +200,89 @@ export function fallbackPlan(c: Candidates): PlanDay[] {
   });
 }
 
+/**
+ * Short codes for candidates (B1, L3, D12, S2) used in the prompt and schema.
+ * Gemini compiles the schema into a decoding state machine and rejects ones that
+ * are too large, so long slug ids in every enum, inside a length-limited array,
+ * fail on bigger candidate sets. Short codes and fixed day keys keep it small
+ * without loosening the constraint.
+ */
+export type Codebook = { toId: Map<string, string>; toCode: Map<string, string> };
+
+const SLOT_PREFIX: Record<Slot, string> = { breakfast: 'B', lunch: 'L', dinner: 'D', snack: 'S' };
+const dayKey = (day: string) => day.toLowerCase();
+
+export function makeCodebook(c: Candidates): Codebook {
+  const toId = new Map<string, string>();
+  const toCode = new Map<string, string>();
+  for (const slot of SLOTS) {
+    c[slot].forEach((r, i) => {
+      const code = `${SLOT_PREFIX[slot]}${i + 1}`;
+      toId.set(code, r.id);
+      toCode.set(`${slot}:${r.id}`, code);
+    });
+  }
+  return { toId, toCode };
+}
+
 export function planSchema(c: Candidates): object {
-  const slotProps = Object.fromEntries(
-    SLOTS.filter((s) => c[s].length > 0).map((s) => [s, { type: 'string', enum: c[s].map((r) => r.id) }]),
-  );
+  const book = makeCodebook(c);
+  const slots = SLOTS.filter((s) => c[s].length > 0);
+  const dayShape = {
+    type: 'object',
+    properties: Object.fromEntries(slots.map((s) => [s, { type: 'string', enum: c[s].map((r) => book.toCode.get(`${s}:${r.id}`)!) }])),
+    required: slots,
+    additionalProperties: false,
+  };
   return {
     type: 'object',
-    properties: {
-      days: {
-        type: 'array',
-        minItems: DAYS.length,
-        maxItems: DAYS.length,
-        items: {
-          type: 'object',
-          properties: { day: { type: 'string', enum: [...DAYS] }, ...slotProps },
-          required: ['day', ...Object.keys(slotProps)],
-          additionalProperties: false,
-        },
-      },
-    },
-    required: ['days'],
+    properties: Object.fromEntries(DAYS.map((d) => [dayKey(d), dayShape])),
+    required: DAYS.map(dayKey),
     additionalProperties: false, // required by OpenAI-style strict structured output
   };
 }
 
+/** Turns a plan (recipe ids) into the model's answer format (codes). Used by tests and fakes. */
+export function encodePlan(days: PlanDay[], c: Candidates): string {
+  const book = makeCodebook(c);
+  return JSON.stringify(
+    Object.fromEntries(
+      days.map((d) => [dayKey(d.day), Object.fromEntries(SLOTS.filter((s) => d[s]).map((s) => [s, book.toCode.get(`${s}:${d[s]}`) ?? d[s]]))]),
+    ),
+  );
+}
+
+/** Model answer (codes keyed by day) -> plan with recipe ids. Unknown codes are kept so validation reports them. */
+function parseDays(text: string, book: Codebook): PlanDay[] | null {
+  try {
+    const parsed = JSON.parse(text);
+    if (!parsed || typeof parsed !== 'object') return null;
+    return DAYS.filter((d) => parsed[dayKey(d)]).map((day) => {
+      const raw = parsed[dayKey(day)];
+      const plan: PlanDay = { day };
+      for (const slot of SLOTS) if (typeof raw[slot] === 'string') plan[slot] = book.toId.get(raw[slot]) ?? raw[slot];
+      return plan;
+    });
+  } catch {
+    return null;
+  }
+}
+
+/** Rewrites recipe ids in validation messages as the codes the model knows. */
+const inCodes = (errors: string[], book: Codebook) =>
+  errors.map((e) => e.replace(/"([a-z0-9-]+)"/g, (m, id) => {
+    for (const [code, rid] of book.toId) if (rid === id) return `"${code}"`;
+    return m;
+  }));
+
 export function buildPrompt(req: PlanRequest, c: Candidates): string {
   const pantryNames = req.pantry.map((p) => p.name);
+  const book = makeCodebook(c);
   const list = (slot: Slot) =>
     c[slot]
       .map((r) => {
         const uses = pantryItemsUsed(r.ingredientNames, pantryNames);
-        return `- ${r.id} | ${r.name} | ${r.minutes} min${uses.length ? ` | uses pantry: ${uses.join(', ')}` : ''}`;
+        return `- ${book.toCode.get(`${slot}:${r.id}`)} | ${r.name} | ${r.minutes} min${uses.length ? ` | uses pantry: ${uses.join(', ')}` : ''}`;
       })
       .join('\n');
   const pantry = req.pantry.map((p) => `- ${[p.quantity, p.name].filter(Boolean).join(' ')}`).join('\n') || '- (empty)';
@@ -240,7 +292,7 @@ export function buildPrompt(req: PlanRequest, c: Candidates): string {
 
   return `You are planning meals for Monday to Friday for a home cook.
 
-Choose recipes ONLY by id from the candidate lists below. Every candidate already meets the user's budget, cooking time, skill level and diet, so do not second-guess those.
+Choose recipes ONLY by their code (like B1 or D4) from the candidate lists below. Every candidate already meets the user's budget, cooking time, skill level and diet, so do not second-guess those.
 
 Priorities, in order:
 1. Variety. Repeat limits per slot:
@@ -254,19 +306,10 @@ ${pantry}
 </pantry>
 
 ${SLOTS.filter((s) => c[s].length > 0)
-  .map((s) => `${s[0].toUpperCase() + s.slice(1)} candidates (id | name | time):\n${list(s)}`)
+  .map((s) => `${s[0].toUpperCase() + s.slice(1)} candidates (code | name | time):\n${list(s)}`)
   .join('\n\n')}
 
-Return JSON with a "days" array of exactly 5 objects, Monday to Friday.`;
-}
-
-function parseDays(text: string): PlanDay[] | null {
-  try {
-    const parsed = JSON.parse(text);
-    return Array.isArray(parsed?.days) ? parsed.days : null;
-  } catch {
-    return null;
-  }
+Return JSON with one object per day ("monday" to "friday"), each mapping every meal to a candidate code.`;
 }
 
 export async function generatePlan(recipes: Recipe[], req: PlanRequest, model: JsonModel): Promise<PlanResult> {
@@ -287,6 +330,7 @@ export async function generatePlan(recipes: Recipe[], req: PlanRequest, model: J
   };
 
   const schema = planSchema(c);
+  const book = makeCodebook(c);
   const basePrompt = buildPrompt(req, c);
   const attempts: { errors: string[] }[] = [];
 
@@ -294,12 +338,12 @@ export async function generatePlan(recipes: Recipe[], req: PlanRequest, model: J
     const prompt =
       attempt === 0
         ? basePrompt
-        : `${basePrompt}\n\nYour previous answer broke these rules. Fix all of them:\n${attempts[0].errors.map((e) => `- ${e}`).join('\n')}`;
+        : `${basePrompt}\n\nYour previous answer broke these rules. Fix all of them:\n${inCodes(attempts[0].errors, book).map((e) => `- ${e}`).join('\n')}`;
     let errors: string[];
     let days: PlanDay[] | null = null;
     try {
-      days = parseDays(await model.generateJson(prompt, schema));
-      errors = days ? validatePlan(days, c) : ['Response was not valid JSON with a "days" array.'];
+      days = parseDays(await model.generateJson(prompt, schema), book);
+      errors = days ? validatePlan(days, c) : ['Response was not a JSON object keyed by day.'];
     } catch (err) {
       errors = [`Model call failed: ${(err as Error).message ?? err}`];
     }

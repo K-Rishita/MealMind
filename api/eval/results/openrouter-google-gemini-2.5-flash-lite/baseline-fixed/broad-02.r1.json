@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:30.199Z",
+  "latencyMs": 1551,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Advanced Beef Consommé (Clear Soup)\",\n      \"dinner\": \"Classic Beef Bourguignon\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"French Crème Brûlée (Advanced)\",\n      \"lunch\": \"Advanced Japanese Agedashi Tofu\",\n      \"dinner\": \"Classic French Beef Wellington\",\n      \"snack\": \"Toast and Jam\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour)\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Advanced Beef Stroganoff (Russian/American)\",\n      \"snack\": \"Fruit Salad\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Classic French Soufflé au Fromage (Advanced)\",\n      \"lunch\": \"Advanced Sushi Rolls (Japanese)\",\n      \"dinner\": \"Advanced French Duck Confit (Traditional)\",\n      \"snack\": \"Yogurt Parfait\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Advanced Chocolate Mousse (Classic French)\",\n      \"lunch\": \"Authentic Pho (Vietnamese Noodle Soup)\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Cheese and Crackers\"\n    }\n  ]\n}\n```",
+  "error": null
+}

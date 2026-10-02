@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-01",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:19.933Z",
+  "latencyMs": 2374,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"french-ratatouille-vegan-gluten-free\",\"dinner\":\"paleo-beef-and-vegetable-skewers\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Tuesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"paleo-chicken-and-sweet-potato-hash\",\"dinner\":\"paleo-friendly-chicken-chili\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Wednesday\",\"breakfast\":\"paleo-sweet-potato-toast-with-avocado\",\"lunch\":\"pescatarian-shrimp-ceviche-peruvian-mexican\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"paleo-zucchini-fritters\"},{\"day\":\"Thursday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"pescatarian-shrimp-ceviche-peruvian-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"paleo-friendly-chicken-skewers-with-veggies\",\"dinner\":\"advanced-french-duck-confit-traditional\",\"snack\":\"vegan-overnight-chia-seed-pudding\"}],\"source\":\"fallback\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\"]},{\"errors\":[\"Wednesday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]}],\"candidateCounts\":{\"breakfast\":4,\"lunch\":13,\"dinner\":14,\"snack\":7},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

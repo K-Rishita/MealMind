@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "infeasible-01",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:43.691Z",
+  "latencyMs": 1530,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Chickpea Salad Sandwich\",\n      \"dinner\": \"Lentil Soup\",\n      \"snack\": \"Apple Slices\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Yogurt with Berries\",\n      \"lunch\": \"Leftover Lentil Soup\",\n      \"dinner\": \"Roasted Chickpeas with Spiced Tomatoes\",\n      \"snack\": \"Handful of Nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Oatmeal with Fruit\",\n      \"lunch\": \"Chickpea and Tomato Salad\",\n      \"dinner\": \"Garlic Lentil Curry\",\n      \"snack\": \"Carrot Sticks and Hummus\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Scrambled Eggs\",\n      \"lunch\": \"Leftover Garlic Lentil Curry\",\n      \"dinner\": \"Tomato and Chickpea Stew\",\n      \"snack\": \"Orange\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast and Marmalade\",\n      \"lunch\": \"Quick Salad with Chickpeas\",\n      \"dinner\": \"Lentil Shepherd's Pie\",\n      \"snack\": \"Rice Cakes\"\n    }\n  ]\n}\n```",
+  "error": null
+}

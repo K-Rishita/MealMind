@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-01",
+  "run": 2,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:32:58.566Z",
+  "latencyMs": 11270,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Keto Friendly Egg Salad\",\n      \"dinner\": \"Keto Chicken and Broccoli Stir-fry\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Friendly Breakfast Skillet\",\n      \"lunch\": \"Simple Homemade Guacamole\",\n      \"dinner\": \"Keto Friendly Coconut Chicken Curry\",\n      \"snack\": \"Keto Friendly Bacon-Wrapped Asparagus\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Gluten-Free Keto Pancakes (Cream Cheese Base)\",\n      \"lunch\": \"Paleo Cauliflower Fried Rice\",\n      \"dinner\": \"Keto Friendly Low-Carb Chili\",\n      \"snack\": \"Keto Cheesy Cauliflower Mash\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Keto Avocado Egg Boats\",\n      \"lunch\": \"Keto Friendly Egg Salad\",\n      \"dinner\": \"Sheet Pan Lemon Herb Salmon and Asparagus\",\n      \"snack\": \"Simple Homemade Guacamole\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Keto Friendly Breakfast Skillet\",\n      \"lunch\": \"French Ratatouille (Vegan/Gluten-Free)\",\n      \"dinner\": \"Shrimp Scampi with Zucchini Noodles\",\n      \"snack\": \"Keto Fat Bombs (Raspberry Cheesecake)\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 786,
+    "candidatesTokenCount": 372,
+    "totalTokenCount": 3181,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 786
+      }
+    ],
+    "thoughtsTokenCount": 2023,
+    "serviceTier": "standard"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-13",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:18.726Z",
+  "latencyMs": 2590,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"keto-chicken-and-broccoli-stir-fry\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"pescatarian-tuna-poke-bowl\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"low-calorie-chicken-lettuce-wraps-asian\",\"dinner\":\"pescatarian-tuna-poke-bowl\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"low-calorie-chicken-lettuce-wraps-asian\",\"snack\":\"simple-homemade-guacamole-mexican\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":15,\"lunch\":63,\"dinner\":63,\"snack\":29},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-03",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.028Z",
+  "latencyMs": 2,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"quick-low-cost-minestrone-soup-italian\",\"dinner\":\"creamy-vegan-tomato-soup\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"vegan-baked-potatoes-with-hummus-and-chives\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"paleo-sweet-potato-toast-with-avocado\"},{\"day\":\"Thursday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"vegan-red-thai-curry-vegetable\",\"dinner\":\"indian-chana-masala-chickpea-curry\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Friday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"dal-tadka-yellow-lentil-curry\",\"dinner\":\"high-fiber-vegan-black-bean-soup\",\"snack\":\"classic-hummus-middle-eastern-dip\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":6,\"lunch\":11,\"dinner\":10,\"snack\":4}}",
+  "error": null,
+  "modelCalls": 0
+}

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "infeasible-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:19.928Z",
+  "latencyMs": 2,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\",\"lunch\",\"dinner\"],\"suggestions\":[{\"field\":\"skill\",\"label\":\"Allow any skill level\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":0,\"dinner\":0,\"snack\":0}}",
+  "error": null,
+  "modelCalls": 0
+}

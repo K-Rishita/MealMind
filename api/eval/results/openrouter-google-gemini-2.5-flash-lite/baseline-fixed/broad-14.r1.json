@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-14",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:37.514Z",
+  "latencyMs": 1798,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Low-Cost Chicken and Rice\",\n      \"dinner\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"snack\": \"Apple Slices\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Fruit Salad\",\n      \"lunch\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"dinner\": \"Dal Tadka (Yellow Lentil Curry) with Rice\",\n      \"snack\": \"Handful of Almonds\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Oatmeal with Berries\",\n      \"lunch\": \"Dal Tadka (Yellow Lentil Curry) with Rice\",\n      \"dinner\": \"Low-Cost Chicken and Rice\",\n      \"snack\": \"Carrot Sticks\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Smoothie (Dairy-Free)\",\n      \"lunch\": \"Low-Cost Chicken and Rice\",\n      \"dinner\": \"Paleo Friendly Chicken Chili\",\n      \"snack\": \"Banana\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Scrambled Tofu\",\n      \"lunch\": \"Paleo Friendly Chicken Chili\",\n      \"dinner\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"snack\": \"Orange\"\n    }\n  ]\n}\n```",
+  "error": null
+}

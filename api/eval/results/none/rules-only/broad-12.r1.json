@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-12",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.042Z",
+  "latencyMs": 6,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"pescatarian-fish-tacos-with-cabbage-slaw\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"pescatarian-tuna-salad-classic-deli-style\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"keto-friendly-egg-salad\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":9,\"lunch\":15,\"dinner\":9,\"snack\":10}}",
+  "error": null,
+  "modelCalls": 0
+}

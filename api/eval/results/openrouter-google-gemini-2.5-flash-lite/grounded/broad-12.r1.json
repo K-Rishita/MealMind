@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-12",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:17.562Z",
+  "latencyMs": 1164,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"pescatarian-tuna-salad-classic-deli-style\",\"dinner\":\"pescatarian-fish-tacos-with-cabbage-slaw\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":15,\"dinner\":9,\"snack\":10},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

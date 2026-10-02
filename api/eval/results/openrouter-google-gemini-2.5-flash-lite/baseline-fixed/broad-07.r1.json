@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-07",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:33.222Z",
+  "latencyMs": 2311,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Mediterranean Quinoa Salad\",\n      \"dinner\": \"Easy Lemon Ricotta Pasta (Vegetarian)\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Gluten-Free Banana Pancakes\",\n      \"lunch\": \"Simple Green Smoothie (Vegan/Gluten-Free)\",\n      \"dinner\": \"Vegan Roasted Red Pepper Pasta Sauce\",\n      \"snack\": \"Easy 3-Ingredient Peanut Butter Cookies\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Vegan Overnight Chia Seed Pudding\",\n      \"lunch\": \"Quick Low-Cost Minestrone Soup (Italian)\",\n      \"dinner\": \"Simple Low-Cost Black Beans and Rice\",\n      \"snack\": \"Simple Homemade Guacamole (Mexican)\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"Keto Friendly Egg Salad\",\n      \"dinner\": \"Vegan Red Thai Curry (Vegetable)\",\n      \"snack\": \"Toast and Jam\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Simple Low-Cost Grilled Cheese Sandwich\",\n      \"dinner\": \"Quick Vegan Black Bean Burgers\",\n      \"snack\": \"Dairy-Free Coconut Whipped Cream (Vegan)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

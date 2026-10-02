@@ -58,11 +58,14 @@ export function openRouterModel(apiKey: string, model: string, fetchImpl: typeof
     });
     const json = (await res.json().catch(() => ({}))) as {
       choices?: { message?: { content?: string } }[];
-      error?: { message?: string; code?: number };
+      error?: { message?: string; code?: number; metadata?: { raw?: unknown; provider_name?: string } };
     };
     // OpenRouter can report errors with HTTP 200 and an `error` body, so check both.
     if (!res.ok || json.error) {
-      throw new Error(`${json.error?.code ?? res.status} ${json.error?.message ?? res.statusText} (openrouter:${model})`);
+      // "Provider returned error" hides the useful part in metadata.raw; include it.
+      const raw = json.error?.metadata?.raw;
+      const detail = raw ? ` [${json.error?.metadata?.provider_name ?? 'provider'}: ${String(typeof raw === 'string' ? raw : JSON.stringify(raw)).slice(0, 600)}]` : '';
+      throw new Error(`${json.error?.code ?? res.status} ${json.error?.message ?? res.statusText}${detail} (openrouter:${model})`);
     }
     return json.choices?.[0]?.message?.content ?? '';
   }

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:10.994Z",
+  "latencyMs": 2513,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"advanced-beef-consomme-clear-soup\",\"dinner\":\"classic-beef-bourguignon\",\"snack\":\"advanced-chocolate-lava-cakes-moulleux-au-chocolat\"},{\"day\":\"Tuesday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"authentic-pho-vietnamese-noodle-soup\",\"dinner\":\"advanced-french-duck-confit-traditional\",\"snack\":\"classic-tiramisu-italian-dessert\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"pescatarian-shrimp-pad-thai-thai-noodles\",\"dinner\":\"authentic-pho-vietnamese-noodle-soup\",\"snack\":\"classic-french-crepes-suzette-advanced\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"japanese-tempura-vegetables-and-shrimp\",\"dinner\":\"classic-french-beef-tartare-high-skill\",\"snack\":\"advanced-french-mille-feuille-napoleon\"},{\"day\":\"Friday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"advanced-sushi-rolls-japanese\",\"dinner\":\"pescatarian-shrimp-pad-thai-thai-noodles\",\"snack\":\"advanced-chocolate-mousse-classic-french\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"\\\"keto-friendly-keto-bread-almond-flour\\\" is used 5 times for breakfast; the limit is 3.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":2,\"lunch\":6,\"dinner\":11,\"snack\":7},\"limitedSlots\":[\"breakfast\"],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

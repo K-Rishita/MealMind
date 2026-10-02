@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "narrow-07",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:41.287Z",
+  "latencyMs": 2086,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Fruit\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Rice Cakes\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Vegetable Sticks\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Dark Chocolate\"\n    }\n  ]\n}\n```",
+  "error": null
+}

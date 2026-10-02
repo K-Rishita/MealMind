@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-09",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.035Z",
+  "latencyMs": 4,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Tuesday\",\"breakfast\":\"gluten-free-banana-pancakes\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Wednesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"easy-3-ingredient-peanut-butter-cookies\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-buttered-noodles\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"gluten-free-chocolate-brownies-fudgy\"},{\"day\":\"Friday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":9,\"lunch\":17,\"dinner\":11,\"snack\":11}}",
+  "error": null,
+  "modelCalls": 0
+}

@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "narrow-05",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.054Z",
+  "latencyMs": 1,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\",\"lunch\",\"dinner\"],\"suggestions\":[{\"field\":\"cost\",\"label\":\"Allow any budget\"},{\"field\":\"diet\",\"label\":\"Remove the diet restriction\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":0,\"dinner\":0,\"snack\":2}}",
+  "error": null,
+  "modelCalls": 0
+}

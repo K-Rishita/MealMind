@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-08",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:15.775Z",
+  "latencyMs": 1785,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Wednesday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"pescatarian-garlic-butter-steamed-mussels\",\"snack\":\"simple-panna-cotta-italian-dessert\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"intermediate-tofu-katsu-curry-japanese\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":2,\"lunch\":7,\"dinner\":7,\"snack\":8},\"limitedSlots\":[\"breakfast\"],\"suggestions\":[{\"field\":\"cost\",\"label\":\"Allow any budget\"},{\"field\":\"diet\",\"label\":\"Remove the diet restriction\"}]}",
+  "error": null,
+  "modelCalls": 1
+}

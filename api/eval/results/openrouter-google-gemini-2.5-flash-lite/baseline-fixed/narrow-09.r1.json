@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "narrow-09",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:42.211Z",
+  "latencyMs": 1552,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Intermediate Tofu Katsu Curry (Japanese)\",\n      \"snack\": \"Apple slices with almond butter\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Overnight Oats (Dairy-Free Milk)\",\n      \"lunch\": \"Paleo Beef and Vegetable Skewers\",\n      \"dinner\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"snack\": \"Handful of nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Smoothie (Dairy-Free Milk, Fruit)\",\n      \"lunch\": \"Pescatarian Shrimp Ceviche (Peruvian/Mexican)\",\n      \"dinner\": \"Paleo Friendly Chicken Chili\",\n      \"snack\": \"Rice cakes with avocado\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Scrambled Eggs (Dairy-Free)\",\n      \"lunch\": \"Intermediate Tofu Katsu Curry (Japanese)\",\n      \"dinner\": \"Paleo Beef and Vegetable Skewers\",\n      \"snack\": \"Vegetable sticks with hummus\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Yogurt (Dairy-Free) with Berries\",\n      \"lunch\": \"Gluten-Free Chicken and Vegetable Curry\",\n      \"dinner\": \"Pescatarian Shrimp Ceviche (Peruvian/Mexican)\",\n      \"snack\": \"Popcorn (air-popped)\"\n    }\n  ]\n}\n```",
+  "error": null
+}

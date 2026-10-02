@@ -73,7 +73,8 @@ export function summarize(system: string, subset: 'core' | 'all' = 'core', runs 
     perCase[c.id] ??= { runs: 0, goodPlans: 0 };
     perCase[c.id].runs++;
     if (rec.error) { apiErrors++; continue; }
-    latencies.push(rec.latencyMs);
+    // Latency only for runs that called a model (instant "impossible" answers would skew it).
+    if ((rec.modelCalls ?? 1) > 0) latencies.push(rec.latencyMs);
 
     const out = parseOutput(rec);
     modelCalls += rec.modelCalls ?? 1;
@@ -147,6 +148,10 @@ export function summarize(system: string, subset: 'core' | 'all' = 'core', runs 
       pantryItemsUsedInPlan: pct(pantryItemsUsedTotal, pantryItemsTotal),
       distinctMainRecipesPerPlan: uniqueMainRatios.length ? pct(uniqueMainRatios.reduce((a, b) => a + b, 0), uniqueMainRatios.length) : null,
       medianMainMealMinutes: percentile(mainMinutes, 50),
+      // Grounded planner only: how the model itself did before the safety nets.
+      modelValidFirstTry: pct(sources['model'] ?? 0, Object.values(sources).reduce((a, b) => a + b, 0)),
+      modelValidAfterRetry: pct((sources['model'] ?? 0) + (sources['model-retry'] ?? 0), Object.values(sources).reduce((a, b) => a + b, 0)),
+      neededRuleFallback: pct(sources['fallback'] ?? 0, Object.values(sources).reduce((a, b) => a + b, 0)),
       latencyP50Ms: percentile(latencies, 50),
       latencyP95Ms: percentile(latencies, 95),
     },

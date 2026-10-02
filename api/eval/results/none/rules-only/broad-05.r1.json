@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-05",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.031Z",
+  "latencyMs": 3,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-chicken-stir-fry-with-shirataki-noodles\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Tuesday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"thai-green-curry-with-tofu\",\"dinner\":\"paleo-friendly-chicken-fajita-bowl\",\"snack\":\"vegan-chocolate-avocado-mousse\"},{\"day\":\"Wednesday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"paleo-friendly-chicken-skewers-with-veggies\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"vegan-chocolate-chip-cookies-dairy-free\"},{\"day\":\"Thursday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"spicy-thai-beef-salad-yum-nua\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"keto-friendly-coconut-chicken-curry\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":1,\"lunch\":10,\"dinner\":11,\"snack\":3}}",
+  "error": null,
+  "modelCalls": 0
+}

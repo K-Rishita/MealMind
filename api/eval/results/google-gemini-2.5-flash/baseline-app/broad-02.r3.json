@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-02",
+  "run": 3,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:33:17.722Z",
+  "latencyMs": 7495,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Tomato and Onion Salad\",\n      \"dinner\": \"Simple Lentil Soup\",\n      \"snack\": \"Apple\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Oatmeal with Fruit\",\n      \"lunch\": \"Sandwich with Tomato and Onion\",\n      \"dinner\": \"Quick Chickpea Stew\",\n      \"snack\": \"Handful of Nuts\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Yogurt with Granola\",\n      \"lunch\": \"Simple Tomato Bruschetta\",\n      \"dinner\": \"Pasta with Marinara Sauce\",\n      \"snack\": \"Banana\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Scrambled Eggs\",\n      \"lunch\": \"Leftover Pasta\",\n      \"dinner\": \"Baked Potatoes with Simple Chickpea Topping\",\n      \"snack\": \"Carrot Sticks with Hummus\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Pancakes\",\n      \"lunch\": \"Quick Lentil Salad\",\n      \"dinner\": \"Simple Vegetable Stir-fry\",\n      \"snack\": \"Orange\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 323,
+    "candidatesTokenCount": 314,
+    "totalTokenCount": 1759,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 323
+      }
+    ],
+    "thoughtsTokenCount": 1122,
+    "serviceTier": "standard"
+  }
+}

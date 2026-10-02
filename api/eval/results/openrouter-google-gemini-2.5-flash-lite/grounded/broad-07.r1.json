@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-07",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:14.920Z",
+  "latencyMs": 1175,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"simple-low-cost-peanut-butter-sandwich\",\"dinner\":\"easy-lemon-ricotta-pasta-vegetarian\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"simple-low-cost-buttered-noodles\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"simple-homemade-guacamole-mexican\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":9,\"lunch\":10,\"dinner\":5,\"snack\":10},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

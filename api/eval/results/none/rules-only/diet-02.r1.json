@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "diet-02",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.060Z",
+  "latencyMs": 4,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"keto-friendly-coconut-chicken-curry\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"dairy-free-chocolate-ice-cream-vegan\"},{\"day\":\"Tuesday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"gluten-free-chicken-and-vegetable-curry\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"thai-mango-sticky-rice-khao-niao-mamuang\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"pescatarian-garlic-butter-steamed-mussels\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-banana-pancakes\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"spicy-thai-beef-salad-yum-nua\",\"snack\":\"classic-hummus-middle-eastern-dip\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":11,\"lunch\":38,\"dinner\":40,\"snack\":20}}",
+  "error": null,
+  "modelCalls": 0
+}

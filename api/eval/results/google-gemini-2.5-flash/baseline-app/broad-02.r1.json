@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-02",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:31:31.331Z",
+  "latencyMs": 10930,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Classic French Omelette\",\n      \"lunch\": \"Mediterranean Chickpea Salad\",\n      \"dinner\": \"Lentil and Vegetable Curry\",\n      \"snack\": \"Banana Nut Muffins\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Sweet Potato and Kale Hash with Poached Eggs\",\n      \"lunch\": \"Creamy Tomato Soup with Grilled Cheese Dippers\",\n      \"dinner\": \"Chipotle-Lime Salmon with Avocado Salsa\",\n      \"snack\": \"Berry Smoothie Bowl\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Breakfast Burrito Bowls\",\n      \"lunch\": \"Taco Salad with Cilantro-Lime Dressing\",\n      \"dinner\": \"Chickpea and Spinach Tagine\",\n      \"snack\": \"Fresh Fruit\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quinoa Black Bean Burgers with Sweet Potato Fries\",\n      \"dinner\": \"Steak Frites with Garlic Herb Butter\",\n      \"snack\": \"Quick Salad\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Yogurt with Granola\",\n      \"lunch\": \"Pesto Pasta with Cherry Tomatoes and Mozzarella\",\n      \"dinner\": \"Pan-Seared Duck Breast with Cherry Sauce\",\n      \"snack\": \"Nuts and Dried Fruit\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 323,
+    "candidatesTokenCount": 354,
+    "totalTokenCount": 2740,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 323
+      }
+    ],
+    "thoughtsTokenCount": 2063,
+    "serviceTier": "standard"
+  }
+}

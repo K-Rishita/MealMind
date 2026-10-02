@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "infeasible-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:44.897Z",
+  "latencyMs": 1459,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Toast and Jam\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Tofu Coconut Curry\",\n      \"snack\": \"Apple Slices\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Oatmeal with Fruit\",\n      \"lunch\": \"Leftover Tofu Coconut Curry\",\n      \"dinner\": \"Spinach and Tofu Stir-fry\",\n      \"snack\": \"Yogurt\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Scrambled Eggs\",\n      \"lunch\": \"Spinach and Tofu Stir-fry (leftovers)\",\n      \"dinner\": \"Coconut Milk Braised Tofu\",\n      \"snack\": \"Handful of Nuts\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Smoothie\",\n      \"lunch\": \"Coconut Milk Braised Tofu (leftovers)\",\n      \"dinner\": \"Tofu and Spinach Pasta\",\n      \"snack\": \"Banana\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Toast with Avocado\",\n      \"lunch\": \"Tofu and Spinach Pasta (leftovers)\",\n      \"dinner\": \"Tofu Scramble with Spinach\",\n      \"snack\": \"Rice Cakes\"\n    }\n  ]\n}\n```",
+  "error": null
+}

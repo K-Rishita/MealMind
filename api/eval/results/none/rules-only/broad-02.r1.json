@@ -1,0 +1,11 @@
+{
+  "system": "rules-only",
+  "caseId": "broad-02",
+  "run": 1,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T20:27:26.025Z",
+  "latencyMs": 5,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"advanced-beef-consomme-clear-soup\",\"dinner\":\"classic-beef-bourguignon\",\"snack\":\"advanced-chocolate-lava-cakes-moulleux-au-chocolat\"},{\"day\":\"Tuesday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"authentic-pho-vietnamese-noodle-soup\",\"dinner\":\"advanced-french-duck-confit-traditional\",\"snack\":\"classic-tiramisu-italian-dessert\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"pescatarian-shrimp-pad-thai-thai-noodles\",\"dinner\":\"classic-french-beef-tartare-high-skill\",\"snack\":\"classic-french-crepes-suzette-advanced\"},{\"day\":\"Thursday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"japanese-tempura-vegetables-and-shrimp\",\"dinner\":\"advanced-beef-stroganoff-russian-american\",\"snack\":\"advanced-french-mille-feuille-napoleon\"},{\"day\":\"Friday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"advanced-sushi-rolls-japanese\",\"dinner\":\"classic-french-souffle-au-fromage-advanced\",\"snack\":\"advanced-chocolate-mousse-classic-french\"}],\"source\":\"fallback\",\"attempts\":[],\"candidateCounts\":{\"breakfast\":2,\"lunch\":6,\"dinner\":11,\"snack\":7}}",
+  "error": null,
+  "modelCalls": 0
+}

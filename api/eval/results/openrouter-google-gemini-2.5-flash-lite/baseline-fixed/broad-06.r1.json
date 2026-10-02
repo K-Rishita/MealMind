@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-06",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:32.567Z",
+  "latencyMs": 1659,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"Vegan Red Lentil Soup (Turkish Mercimek Çorbası)\",\n      \"dinner\": \"Indian Chana Masala (Chickpea Curry)\",\n      \"snack\": \"Simple Green Smoothie (Vegan/Gluten-Free)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Overnight Oats (5-Minute Prep)\",\n      \"lunch\": \"Quick Low-Cost Minestrone Soup (Italian)\",\n      \"dinner\": \"Simple Low-Cost Black Beans and Rice\",\n      \"snack\": \"Classic Hummus (Middle Eastern Dip)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"High Protein Tofu Scramble (Vegan)\",\n      \"lunch\": \"Creamy Vegan Tomato Soup\",\n      \"dinner\": \"Quick Vegan Black Bean Burgers\",\n      \"snack\": \"Easy 3-Ingredient Peanut Butter Cookies\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Vegan Overnight Chia Seed Pudding\",\n      \"lunch\": \"Dal Tadka (Yellow Lentil Curry)\",\n      \"dinner\": \"Low-Cost Chicken and Rice\",\n      \"snack\": \"Simple Low-Cost Peanut Butter Sandwich\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Dairy-Free Low-Cost Oatmeal (Vegan)\",\n      \"lunch\": \"High-Fiber Vegan Black Bean Soup\",\n      \"dinner\": \"Homemade Marinara Sauce (Italian Base) with Simple Indian Basmati Rice\",\n      \"snack\": \"Paleo Sweet Potato Toast with Avocado\"\n    }\n  ]\n}\n```",
+  "error": null
+}

@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-06",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:13.720Z",
+  "latencyMs": 1200,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"indian-chana-masala-chickpea-curry\",\"dinner\":\"low-cost-chicken-and-rice\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"snack\":\"simple-low-cost-peanut-butter-sandwich\"},{\"day\":\"Wednesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"indian-chana-masala-chickpea-curry\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"dal-tadka-yellow-lentil-curry\",\"dinner\":\"high-fiber-vegan-black-bean-soup\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Friday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"low-calorie-chicken-lettuce-wraps-asian\",\"dinner\":\"creamy-vegan-tomato-soup\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":6,\"lunch\":15,\"dinner\":13,\"snack\":7},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

@@ -1,0 +1,23 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "broad-02",
+  "run": 2,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:33:09.839Z",
+  "latencyMs": 15324,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Classic French Soufflé au Fromage (Advanced)\",\n      \"dinner\": \"Classic Beef Bourguignon\",\n      \"snack\": \"Classic Tiramisu (Italian Dessert)\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour)\",\n      \"lunch\": \"Advanced Sushi Rolls (Japanese)\",\n      \"dinner\": \"Classic French Beef Wellington\",\n      \"snack\": \"Advanced Chocolate Mousse (Classic French)\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Classic French Crêpes Suzette (Advanced)\",\n      \"lunch\": \"Authentic Pho (Vietnamese Noodle Soup)\",\n      \"dinner\": \"Advanced French Duck Confit (Traditional)\",\n      \"snack\": \"Advanced French Mille-Feuille (Napoleon)\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Advanced Croissants (French Pastry)\",\n      \"lunch\": \"Pescatarian Shrimp Pad Thai (Thai Noodles)\",\n      \"dinner\": \"Advanced Beef Stroganoff (Russian/American)\",\n      \"snack\": \"French Crème Brûlée (Advanced)\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Keto Friendly Keto Bread (Almond Flour)\",\n      \"lunch\": \"Japanese Tempura Vegetables and Shrimp\",\n      \"dinner\": \"Classic French Beef Tartare (High Skill)\",\n      \"snack\": \"Classic New York Style Cheesecake\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 664,
+    "candidatesTokenCount": 381,
+    "totalTokenCount": 4034,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 664
+      }
+    ],
+    "thoughtsTokenCount": 2989,
+    "serviceTier": "standard"
+  }
+}

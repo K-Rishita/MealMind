@@ -1,0 +1,10 @@
+{
+  "system": "baseline-fixed",
+  "caseId": "infeasible-04",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:20:45.222Z",
+  "latencyMs": 1673,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Paleo Scrambled Eggs\",\n      \"lunch\": \"Quick Salad\",\n      \"dinner\": \"Roasted Salmon with Asparagus\",\n      \"snack\": \"Apple Slices\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Berries and Nuts\",\n      \"lunch\": \"Leftover Roasted Salmon with Asparagus\",\n      \"dinner\": \"Lemon Herb Chicken with Roasted Sweet Potatoes\",\n      \"snack\": \"Hard-boiled Egg\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Paleo Smoothie\",\n      \"lunch\": \"Chicken Salad Lettuce Wraps\",\n      \"dinner\": \"Grilled Salmon with Lemon and Asparagus\",\n      \"snack\": \"Carrot Sticks with Almond Butter\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Fried Eggs with Avocado\",\n      \"lunch\": \"Leftover Grilled Salmon with Lemon and Asparagus\",\n      \"dinner\": \"Beef Stir-fry with Broccoli and Peppers\",\n      \"snack\": \"Orange\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Coconut Milk Chia Pudding\",\n      \"lunch\": \"Quick Salad with Grilled Chicken\",\n      \"dinner\": \"Baked Salmon with Lemon-Dill Sauce and Steamed Asparagus\",\n      \"snack\": \"Handful of Almonds\"\n    }\n  ]\n}\n```",
+  "error": null
+}

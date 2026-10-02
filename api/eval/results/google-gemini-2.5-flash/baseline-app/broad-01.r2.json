@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-01",
+  "run": 2,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:32:58.566Z",
+  "latencyMs": 19154,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Oatmeal with Berries\",\n      \"lunch\": \"Chickpea Salad Sandwich\",\n      \"dinner\": \"Lentil Soup\",\n      \"snack\": \"Fruit Salad\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"Scrambled Eggs\",\n      \"lunch\": \"Mediterranean Chickpea Salad\",\n      \"dinner\": \"Spiced Lentil Stew\",\n      \"snack\": \"Roasted Chickpeas\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Toast with Avocado\",\n      \"lunch\": \"Chana Masala\",\n      \"dinner\": \"Mujadara\",\n      \"snack\": \"Greek Yogurt with Honey\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Fruit Smoothie\",\n      \"lunch\": \"Hard-Boiled Eggs\",\n      \"dinner\": \"Homemade Mac and Cheese\",\n      \"snack\": \"Apple Slices with Peanut Butter\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Peanut Butter Banana Toast\",\n      \"lunch\": \"Garden Salad\",\n      \"dinner\": \"Pizza\",\n      \"snack\": \"Energy Balls\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 527,
+    "candidatesTokenCount": 305,
+    "totalTokenCount": 4526,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 527
+      }
+    ],
+    "thoughtsTokenCount": 3694,
+    "serviceTier": "standard"
+  }
+}

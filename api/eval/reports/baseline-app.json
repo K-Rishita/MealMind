@@ -1,0 +1,41 @@
+{
+  "system": "baseline-app",
+  "model": "gemini-2.5-flash",
+  "calls": 4,
+  "cases": 4,
+  "apiErrors": 0,
+  "metrics": {
+    "validPlanRate": 100,
+    "correctDaysRate": 100,
+    "mainMealsNotInDatabase": 98.3,
+    "mainMealsViolatingConstraints": 1.7,
+    "mainMealsGroundedAndCompliant": 0,
+    "snacksInDatabase": 0,
+    "fullyValidPlanRate_plannableCases": 0,
+    "impossibleRequestsHandled": null,
+    "injectionCasesFullyValid": null,
+    "plansWithRecipeRepeatedOver2x": 0,
+    "mainMealsSuitForSlot": 1.7,
+    "pantryItemsUsedInPlan": 15.4,
+    "distinctMainRecipesPerPlan": 1.7,
+    "latencyP50Ms": 10712,
+    "latencyP95Ms": 14913
+  },
+  "violationsOfMainMeals": {
+    "cost": 0,
+    "time": 0,
+    "skill": 0,
+    "diet": 1
+  },
+  "sources": {},
+  "modelCalls": 4,
+  "counts": {
+    "parsed": 4,
+    "mainEntries": 60,
+    "mainInDb": 1,
+    "mainCompliant": 0,
+    "plannableRuns": 4,
+    "unplannableRuns": 0,
+    "injectionRuns": 0
+  }
+}

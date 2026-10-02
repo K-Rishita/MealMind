@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:10.998Z",
+  "latencyMs": 2549,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"quick-low-cost-minestrone-soup-italian\",\"dinner\":\"simple-low-cost-black-beans-and-rice\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"creamy-vegan-tomato-soup\",\"dinner\":\"quick-vegan-black-bean-burgers\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"vegan-red-lentil-soup-turkish-mercimek-corbas\",\"dinner\":\"vegan-red-thai-curry-vegetable\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"vegan-baked-potatoes-with-hummus-and-chives\",\"dinner\":\"indian-chana-masala-chickpea-curry\",\"snack\":\"paleo-sweet-potato-toast-with-avocado\"},{\"day\":\"Friday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"dal-tadka-yellow-lentil-curry\",\"snack\":\"classic-hummus-middle-eastern-dip\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":6,\"lunch\":11,\"dinner\":10,\"snack\":4},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

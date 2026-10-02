@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-04",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash-lite",
+  "startedAt": "2026-10-02T23:23:13.508Z",
+  "latencyMs": 2266,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Tuesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"paleo-friendly-chicken-skewers-with-veggies\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"simple-pesto-chicken-keto-gluten-free\",\"dinner\":\"keto-friendly-chicken-pot-pie-filling-no-crust\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"fallback\",\"attempts\":[{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]},{\"errors\":[\"Monday has the same recipe for lunch and dinner.\",\"Tuesday has the same recipe for lunch and dinner.\",\"Wednesday has the same recipe for lunch and dinner.\",\"Thursday has the same recipe for lunch and dinner.\",\"Friday has the same recipe for lunch and dinner.\"]}],\"candidateCounts\":{\"breakfast\":1,\"lunch\":8,\"dinner\":11,\"snack\":2},\"limitedSlots\":[\"breakfast\"],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 2
+}

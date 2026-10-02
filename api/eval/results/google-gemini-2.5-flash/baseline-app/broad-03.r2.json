@@ -1,0 +1,23 @@
+{
+  "system": "baseline-app",
+  "caseId": "broad-03",
+  "run": 2,
+  "model": "gemini-2.5-flash",
+  "startedAt": "2026-10-02T19:33:25.841Z",
+  "latencyMs": 10265,
+  "text": "```json\n{\n  \"plan\": [\n    {\n      \"day\": \"Monday\",\n      \"breakfast\": \"Oatmeal with Fruit and Nuts\",\n      \"lunch\": \"Lentil Soup\",\n      \"dinner\": \"Cheesy Baked Penne\",\n      \"snack\": \"Fruit Smoothie\"\n    },\n    {\n      \"day\": \"Tuesday\",\n      \"breakfast\": \"French Toast\",\n      \"lunch\": \"Tuna Salad Sandwich\",\n      \"dinner\": \"Spaghetti Aglio e Olio\",\n      \"snack\": \"Classic Tomato Bruschetta\"\n    },\n    {\n      \"day\": \"Wednesday\",\n      \"breakfast\": \"Spinach and Feta Omelette\",\n      \"lunch\": \"Grilled Cheese Sandwich\",\n      \"dinner\": \"Creamy Tomato Pasta\",\n      \"snack\": \"Simple Green Salad\"\n    },\n    {\n      \"day\": \"Thursday\",\n      \"breakfast\": \"Pancakes with Berries\",\n      \"lunch\": \"Chicken Caesar Wrap\",\n      \"dinner\": \"Pasta Primavera\",\n      \"snack\": \"Roasted Vegetable Medley\"\n    },\n    {\n      \"day\": \"Friday\",\n      \"breakfast\": \"Fruit Smoothie\",\n      \"lunch\": \"Minestrone Soup\",\n      \"dinner\": \"Quick Chicken Stir-fry\",\n      \"snack\": \"Apple Crumble\"\n    }\n  ]\n}\n```",
+  "error": null,
+  "usage": {
+    "promptTokenCount": 356,
+    "candidatesTokenCount": 314,
+    "totalTokenCount": 2425,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 356
+      }
+    ],
+    "thoughtsTokenCount": 1755,
+    "serviceTier": "standard"
+  }
+}
