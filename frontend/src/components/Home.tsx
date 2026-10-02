@@ -1,292 +1,207 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
 import { Card, CardContent } from './ui/card';
-import type { PantryItem, MealPlan } from '../App';
+import { RecipeDialog } from './RecipeDialog';
+import { postApi } from '../lib/api';
+import { fetchLatestPlan } from '../lib/data';
+import { formatQuantity, type MealPlan, type PantryItem, type PlanSlot, type PlanSuggestion, type Recipe } from '../lib/types';
 
-// Define the expected structured response for a single day in the AI-generated plan
-type RawMealPlanDay = {
-  day: string;
-  breakfast: string;
-  lunch: string;
-  dinner: string;
-  snack: string;
-};
+type Filters = { cost: string; time: string; skill: string };
 
-// Define the full plan structure expected from the AI
-type RawMealPlanResponse = {
-  plan: RawMealPlanDay[];
-};
+type PlanResponse =
+  | ({ status: 'ok'; diet: string; limitedSlots: PlanSlot[]; suggestions: PlanSuggestion[] } & MealPlan)
+  | { status: 'insufficient'; missingSlots: PlanSlot[]; suggestions: PlanSuggestion[]; diet: string };
 
 type HomeProps = {
   pantryItems: PantryItem[];
-  isStructuredMode: boolean; // Controls whether to show single recipe finder or meal plan interface
-  mealPlan: MealPlan[]; // Default/Existing meal plan structure
+  recipes: Recipe[];
+  userDiet?: string;
+  isStructuredMode: boolean; // Structured = weekly meal plan, Flexible = "What can I make now?"
   onNavigateToPantry: () => void;
-  // Function to fetch relevant recipe names from the database based on user filters
-  fetchRecipesByFilters: (filters: { costOfIngredients: string; timeTakenToCook: string; skillLevel: string; }) => Promise<string[]>;
+  onNavigateToProfile: () => void;
+  onWhatCanIMake: () => void; // Opens the Recipe Generator
+  onMakeRecipe: (recipe: Recipe) => void;
 };
 
-export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPantry, fetchRecipesByFilters }: HomeProps) {
-  // State for single recipe generation filters ('What can I make now?')
-  const [showFilterDialog, setShowFilterDialog] = useState(false);
-  const [costFilter, setCostFilter] = useState<string>('all');
-  const [timeFilter, setTimeFilter] = useState<string>('all');
-  const [skillFilter, setSkillFilter] = useState<string>('all');
-  const [additionalNotes, setAdditionalNotes] = useState<string>('');
-  const [showRecipeDialog, setShowRecipeDialog] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState<MealPlan | null>(null);
+const SLOTS: PlanSlot[] = ['breakfast', 'lunch', 'dinner', 'snack'];
 
-  // State for meal plan generation filters
+/** ["a"] -> "a", ["a","b"] -> "a and b", ["a","b","c"] -> "a, b and c" */
+const joinWords = (words: string[]) => (words.length <= 1 ? words.join('') : `${words.slice(0, -1).join(', ')} and ${words[words.length - 1]}`);
+const ALL: Filters = { cost: 'all', time: 'all', skill: 'all' };
+
+export function Home({
+  pantryItems,
+  recipes,
+  userDiet,
+  isStructuredMode,
+  onNavigateToPantry,
+  onNavigateToProfile,
+  onWhatCanIMake,
+  onMakeRecipe,
+}: HomeProps) {
   const [showMealPlanDialog, setShowMealPlanDialog] = useState(false);
-  const [mealPlanBudget, setMealPlanBudget] = useState<string>('all');
-  const [mealPlanTime, setMealPlanTime] = useState<string>('all');
-  const [mealPlanSkill, setMealPlanSkill] = useState<string>('all');
+  const [filters, setFilters] = useState<Filters>(ALL);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [plan, setPlan] = useState<MealPlan | null>(null);
+  const [insufficient, setInsufficient] = useState<Extract<PlanResponse, { status: 'insufficient' }> | null>(null);
+  const [variety, setVariety] = useState<{ limitedSlots: PlanSlot[]; suggestions: PlanSuggestion[] } | null>(null);
+  const [openRecipe, setOpenRecipe] = useState<Recipe | null>(null);
 
-  // State for AI Generation
-  const [isGeneratingMealPlan, setIsGeneratingMealPlan] = useState(false);
-  const [rawMealPlanResponse, setRawMealPlanResponse] = useState<string | null>(null); // For debugging failed parsing
-  const [generatedMealPlan, setGeneratedMealPlan] = useState<RawMealPlanDay[] | null>(null); // The final, structured plan
+  const recipeById = new Map(recipes.map((r) => [r.id, r]));
+  const dietLabel = userDiet && userDiet !== 'none' ? userDiet : null;
 
-  const handleWhatCanIMake = () => {
-    setShowFilterDialog(true);
-  };
+  // Show the most recent saved plan when entering Structured mode.
+  useEffect(() => {
+    if (!isStructuredMode || plan) return;
+    fetchLatestPlan()
+      .then((saved) => saved && setPlan(saved))
+      .catch(() => {}); // no saved plan is fine
+  }, [isStructuredMode]);
 
-  const handleShowRecipe = (meal: MealPlan) => {
-    setSelectedMeal(meal);
-    setShowRecipeDialog(true);
-  };
-
-  /**
-   * Placeholder handler for the single "Find Recipes" button (in the filter dialog).
-   * In a complete app, this would trigger a single recipe AI generation.
-   */
-  const handleFilterRecipes = async () => {
-    setShowFilterDialog(false);
-    console.log('Filters for single recipe:', { costFilter, timeFilter, skillFilter, additionalNotes });
-
-    // TODO: Implement the fetch call for single recipe generation here
-
-    // Reset filters
-    setCostFilter('all');
-    setTimeFilter('all');
-    setSkillFilter('all');
-    setAdditionalNotes('');
-  };
-
-  /**
-   * Step 1 of meal plan generation: Fetch relevant recipe names from Firebase/Database
-   * based on the budget, time, and skill filters selected in the dialog.
-   */
-  const handleFilterAndGenerateMealPlan = async () => {
-    setIsGeneratingMealPlan(true);
-    setGeneratedMealPlan(null);
-    setRawMealPlanResponse(null);
+  const generate = async (f: Filters) => {
     setShowMealPlanDialog(false);
-
-    const filters = {
-      costOfIngredients: mealPlanBudget,
-      timeTakenToCook: mealPlanTime,
-      skillLevel: mealPlanSkill
-    };
-
-    let availableRecipeNames: string[] = [];
+    setIsGenerating(true);
+    setInsufficient(null);
     try {
-      // Fetch recipe names using the prop function
-      availableRecipeNames = await fetchRecipesByFilters(filters);
-    } catch (error) {
-      console.error("Error retrieving recipes from Firebase:", error);
-      alert("Error fetching recipes. Generating plan without recipe constraints.");
-      availableRecipeNames = []; // Ensure it's an array for the next step
+      const res = await postApi<PlanResponse>('/api/meal-plan', f);
+      if (res.status === 'insufficient') {
+        setInsufficient(res);
+      } else {
+        setPlan(res);
+        setVariety(res.limitedSlots.length ? { limitedSlots: res.limitedSlots, suggestions: res.suggestions } : null);
+        if (res.source === 'fallback') toast('The AI planner was unavailable, so this plan was built from your filters by rules.');
+      }
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : String(e));
+    } finally {
+      setIsGenerating(false);
     }
-
-    // Proceed to Step 2: Generate the plan using the retrieved recipe names
-    await handleGenerateMealPlan(availableRecipeNames);
   };
 
-  /**
-   * Step 2 of meal plan generation: Construct the prompt and call the AI backend.
-   * @param availableRecipeNames - Names fetched from the database in Step 1.
-   */
-  const handleGenerateMealPlan = async (availableRecipeNames: string[]) => {
-    setIsGeneratingMealPlan(true);
-    setGeneratedMealPlan(null);
-    setRawMealPlanResponse(null);
-
-    // 1. Collect Ingredients for context
-    const ingredientsList = pantryItems
-    .map(item => `${item.quantity} of ${item.name}`)
-    .join(', ');
-
-    // 2. Construct the Dynamic Prompt, including the filtered recipe names
-    const recipeNamesList = availableRecipeNames.join(', ');
-
-    const prompt = `
-      You are an expert chef and meal planner. Generate a 5-day meal plan (Monday to Friday) based on the following:
-
-      Available Ingredients (for reference): ${ingredientsList || 'None listed.'}
-      Available Recipes in Database: [${recipeNamesList}]
-      
-      Instructions:
-      1. For the meal plan, you **MUST ONLY** use recipe names found in the [${recipeNamesList}] list.
-      2. If a recipe from the list is not suitable for a specific meal (e.g., a "Dinner" recipe for "Breakfast"), suggest a generic snack or simple item like "Toast and Jam" or "Quick Salad" if no appropriate recipe name is available for that slot.
-      
-      Budget Preference: ${mealPlanBudget}
-      Time Preference: ${mealPlanTime}
-      Skill Level: ${mealPlanSkill}
-      
-      The output MUST be a JSON object with the following structure:
-            {
-              "plan": [
-                { "day": "Monday", "breakfast": "Recipe Name for Breakfast", "lunch": "Recipe Name for Lunch", "dinner": "Recipe Name for Dinner", "snack": "Snack Idea" },
-                // ... Tuesday to Friday ...
-              ]
-            }
-            Do not include any introductory or concluding text outside of the JSON block.
-        `;
-
-    try {
-      const backendUrl = 'http://localhost:5000/api/generate-recipe';
-
-      const response = await fetch(backendUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: prompt }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const rawTextResponse = data.recipe;
-
-      // 3. PARSE AND STRUCTURE THE JSON RESPONSE
-      try {
-        // Use regex to robustly find and isolate the JSON block, ignoring surrounding text
-        const jsonMatch = rawTextResponse.match(/\{[\s\S]*\}/);
-
-        if (!jsonMatch || jsonMatch.length === 0) {
-          throw new Error("Could not find a valid JSON object within the AI's response.");
-        }
-
-        const jsonString = jsonMatch[0];
-        const parsedData: RawMealPlanResponse = JSON.parse(jsonString);
-
-        if (parsedData.plan && Array.isArray(parsedData.plan)) {
-          setGeneratedMealPlan(parsedData.plan); // Success: Set the structured plan
-        } else {
-          throw new Error("Invalid 'plan' array structure returned by the AI.");
-        }
-      } catch (jsonError) {
-        // Failure: Display the raw response for debugging the JSON format
-        console.error("Failed to parse AI response as JSON:", rawTextResponse, jsonError);
-        setRawMealPlanResponse(`AI output was received but failed to parse as JSON. Raw output starts: ${rawTextResponse.substring(0, 300)}...`);
-      }
-
-      setRawMealPlanResponse(rawTextResponse); // Set raw response for potential debug viewing
-
-    } catch (error) {
-      console.error('Error fetching meal plan from backend:', error);
-      setRawMealPlanResponse(`Failed to fetch meal plan. Error: ${error instanceof Error ? error.message : String(error)}`);
-      setGeneratedMealPlan(null);
-    }
-
-    setIsGeneratingMealPlan(false);
-
-    // Reset filters
-    setMealPlanBudget('all');
-    setMealPlanTime('all');
-    setMealPlanSkill('all');
+  const relax = (field: PlanSuggestion['field']) => {
+    const next = { ...filters, [field]: 'all' };
+    setFilters(next);
+    generate(next);
   };
 
-  // Determine which meal plan array to display (AI-generated takes precedence)
-  const currentPlan = generatedMealPlan || mealPlan;
-
-  // Function to render the new, detailed AI-generated meal plan structure
-  const renderNewMealCard = (meal: RawMealPlanDay) => (
-      <Card key={meal.day}>
-        <CardContent className="flex flex-col p-4 space-y-2">
-          <span className="text-gray-900 font-bold border-b pb-1 mb-2">{meal.day}</span>
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            <p><span className="font-semibold text-orange-600">Breakfast:</span> {meal.breakfast}</p>
-            <p><span className="font-semibold text-orange-600">Lunch:</span> {meal.lunch}</p>
-            <p><span className="font-semibold text-orange-600">Dinner:</span> {meal.dinner}</p>
-            <p><span className="font-semibold text-orange-600">Snack:</span> {meal.snack}</p>
-          </div>
-        </CardContent>
-      </Card>
+  const suggestionButtons = (suggestions: PlanSuggestion[]) => (
+    <div className="flex flex-wrap gap-2 mt-3">
+      {suggestions
+        .filter((s) => s.field !== 'diet')
+        .map((s) => (
+          <Button key={s.field} size="sm" variant="outline" onClick={() => relax(s.field)}>
+            {s.label}
+          </Button>
+        ))}
+      {suggestions.some((s) => s.field === 'diet') && (
+        <Button size="sm" variant="outline" onClick={onNavigateToProfile}>
+          Change your diet in Profile
+        </Button>
+      )}
+      {suggestions.length === 0 && <span className="text-sm">Try loosening more than one filter.</span>}
+    </div>
   );
 
-  // Function to render the existing meal plan structure (before AI generation)
-  const renderOldMealCard = (meal: MealPlan) => (
-      <Card key={meal.id}>
-        <CardContent className="flex justify-between items-center p-4">
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-900 min-w-[100px] font-medium">{meal.day}</span>
-            <span className="text-gray-700">{meal.recipe.name}</span>
-          </div>
-          <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleShowRecipe(meal)}
-          >
-            Show Recipe
-          </Button>
-        </CardContent>
-      </Card>
+  const filterSelect = (id: keyof Filters, label: string, options: [string, string][]) => (
+    <div>
+      <Label htmlFor={`plan-${id}`}>{label}</Label>
+      <Select value={filters[id]} onValueChange={(v) => setFilters((f) => ({ ...f, [id]: v }))}>
+        <SelectTrigger id={`plan-${id}`} className="mt-2">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map(([value, text]) => (
+            <SelectItem key={value} value={value}>
+              {text}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 
   return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section: Conditional Rendering based on isStructuredMode */}
-        <div className="text-center mb-12">
-          <h1 className="text-gray-900 mb-6 text-3xl font-bold">Welcome to Your Recipe Assistant</h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-gray-900 mb-6 text-3xl font-bold">Welcome to Your Recipe Assistant</h1>
 
-          {!isStructuredMode ? (
-              // Mode 1: Single Recipe Finder
-              <Button
-                  onClick={handleWhatCanIMake}
-                  size="lg"
-                  className="px-8 py-6 text-lg bg-gray-900 hover:bg-gray-800 text-white"
-              >
-                What can I make now?
+        {!isStructuredMode ? (
+          <Button onClick={onWhatCanIMake} size="lg" className="px-8 py-6 text-lg bg-gray-900 hover:bg-gray-800 text-white">
+            What can I make now?
+          </Button>
+        ) : (
+          <div className="max-w-3xl mx-auto text-left">
+            <div className="flex justify-between items-center mb-2">
+              <h2 className="text-gray-900 text-xl font-semibold">Your Meal Plan</h2>
+              <Button onClick={() => setShowMealPlanDialog(true)} disabled={isGenerating}>
+                {isGenerating ? 'Planning…' : plan ? 'Plan a New Week' : 'Generate Meal Plan'}
               </Button>
-          ) : (
-              // Mode 2: Meal Plan Viewer/Generator
-              <div className="max-w-3xl mx-auto">
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-gray-900 text-xl font-semibold">
-                    {generatedMealPlan ? 'AI-Generated Meal Plan' : 'Your Default Meal Plan'}
-                  </h2>
-                  <Button onClick={() => setShowMealPlanDialog(true)} disabled={isGeneratingMealPlan}>
-                    {isGeneratingMealPlan ? 'Generating...' : 'Generate New Meal Plan'}
-                  </Button>
-                </div>
-                <div className="space-y-3">
-                  {/* Display the generated plan if available, otherwise display the default plan */}
-                  {generatedMealPlan ? (
-                      generatedMealPlan.map(renderNewMealCard)
-                  ) : (
-                      mealPlan.map(renderOldMealCard)
-                  )}
-                </div>
+            </div>
+            <p className="text-sm text-gray-500 mb-6">
+              {dietLabel ? `Planning for your ${dietLabel} diet. ` : 'No diet restriction set. '}
+              <button className="text-orange-600 hover:underline" onClick={onNavigateToProfile}>
+                Change in Profile
+              </button>
+            </p>
 
-                {/* DEBUG OUTPUT: Visible only if parsing failed, showing the raw AI response */}
-                {rawMealPlanResponse && !generatedMealPlan && (
-                    <div className="mt-8 p-4 bg-red-100 border border-red-300 rounded-md whitespace-pre-wrap text-xs text-red-700">
-                      <h3 className="font-semibold mb-2">Error: Failed to Parse Structured Plan</h3>
-                      <p>{rawMealPlanResponse}</p>
-                    </div>
-                )}
+            {insufficient && (
+              <div className="mb-6 p-4 rounded-lg border border-amber-300 bg-amber-50 text-amber-900">
+                <p className="font-medium">
+                  No recipes fit your filters for {joinWords(insufficient.missingSlots)}.
+                </p>
+                <p className="text-sm mt-1">MealMind only plans with real recipes, so it won't make one up. Try:</p>
+                {suggestionButtons(insufficient.suggestions)}
               </div>
-          )}
-        </div>
+            )}
+
+            {variety && !insufficient && (
+              <div className="mb-6 p-4 rounded-lg border border-sky-200 bg-sky-50 text-sky-900">
+                <p className="font-medium">Only a few {joinWords(variety.limitedSlots)} recipes match, so this week repeats a lot.</p>
+                <p className="text-sm mt-1">For more variety, try:</p>
+                {suggestionButtons(variety.suggestions)}
+              </div>
+            )}
+
+            {insufficient && plan && <p className="text-sm text-gray-500 mb-2">Your current plan is unchanged:</p>}
+            <div className={`space-y-3 ${insufficient ? 'opacity-60' : ''}`}>
+              {plan?.days.map((day) => (
+                <Card key={day.day}>
+                  <CardContent className="p-4">
+                    <p className="text-gray-900 font-bold border-b pb-1 mb-2">{day.day}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                      {SLOTS.map((slot) => {
+                        const meal = day[slot];
+                        const recipe = meal ? recipeById.get(meal.id) : undefined;
+                        return (
+                          <p key={slot}>
+                            <span className="font-semibold text-orange-600 capitalize">{slot}:</span>{' '}
+                            {meal && recipe ? (
+                              <button className="text-gray-800 hover:underline text-left" onClick={() => setOpenRecipe(recipe)}>
+                                {meal.name} <span className="text-gray-400">· {meal.minutes} min</span>
+                              </button>
+                            ) : (
+                              <span className="text-gray-400">{slot === 'snack' ? 'No snack fits your filters' : '—'}</span>
+                            )}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              {!plan && !insufficient && !isGenerating && (
+                <div className="text-center py-8 bg-white border border-dashed rounded-lg text-gray-500">
+                  Generate a plan for Monday to Friday from the recipes that fit your filters and diet.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Pantry Preview Section */}
       <div className="mt-16">
@@ -297,225 +212,49 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
           </Button>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {pantryItems
-            // Filter out items without a name (to handle "ghost" items)
-            .filter(item => item.name && item.name.trim() !== '')
-            .slice(0, 8) // Show up to 8 items for a quick preview
-            .map((item) => (
-              <Card key={item.id} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <p className="text-gray-900 font-medium">{item.name}</p>
-                  <p className="text-gray-500 text-sm bg-gray-100 inline-block px-2 py-0.5 rounded mt-1">{item.quantity}</p>
-                </CardContent>
-              </Card>
+          {pantryItems.slice(0, 8).map((item) => (
+            <Card key={item.id} className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <p className="text-gray-900 font-medium">{item.name}</p>
+                {formatQuantity(item) && (
+                  <p className="text-gray-500 text-sm bg-gray-100 inline-block px-2 py-0.5 rounded mt-1">{formatQuantity(item)}</p>
+                )}
+              </CardContent>
+            </Card>
           ))}
-          {pantryItems.filter(item => item.name && item.name.trim() !== '').length === 0 && (
-             <div className="col-span-full text-center py-8 bg-gray-50 border border-dashed rounded-lg">
-                <p className="text-gray-500">Your pantry is empty.</p>
-             </div>
+          {pantryItems.length === 0 && (
+            <div className="col-span-full text-center py-8 bg-gray-50 border border-dashed rounded-lg">
+              <p className="text-gray-500">Your pantry is empty.</p>
+            </div>
           )}
         </div>
       </div>
 
-      {/* Filter Dialog: For "What can I make now?" (Single Recipe) */}
-      <Dialog open={showFilterDialog} onOpenChange={setShowFilterDialog}>
+      <RecipeDialog recipe={openRecipe} onClose={() => setOpenRecipe(null)} onCook={onMakeRecipe} />
+
+      <Dialog open={showMealPlanDialog} onOpenChange={setShowMealPlanDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Filter Recipes</DialogTitle>
+            <DialogTitle>Plan Your Week</DialogTitle>
             <DialogDescription>
-              Choose your preferences to find recipes that match your criteria.
+              Every meal comes from MealMind's recipes and fits these filters{dietLabel ? ` and your ${dietLabel} diet` : ''}.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 mt-4">
-            {/* Cost Filter */}
-            <div>
-              <Label htmlFor="cost-filter">Cost</Label>
-              <Select
-                value={costFilter}
-                onValueChange={setCostFilter}
-              >
-                <SelectTrigger id="cost-filter" className="mt-2">
-                  <SelectValue placeholder="Any cost" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Any</SelectItem>
-                  <SelectItem value="Low">Low</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="High">High</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Time Filter */}
-            <div>
-              <Label htmlFor="time-filter">Time</Label>
-              <Select
-                value={timeFilter}
-                onValueChange={setTimeFilter}
-              >
-                <SelectTrigger id="time-filter" className="mt-2">
-                  <SelectValue placeholder="Any time" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All">Any</SelectItem>
-                  <SelectItem value="quick">Quick (30 min or less)</SelectItem>
-                  <SelectItem value="medium">Medium (30-60 min)</SelectItem>
-                  <SelectItem value="long">Long (60+ min)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Skill Level Filter */}
-            <div>
-              <Label htmlFor="skill-filter">Skill Level</Label>
-              <Select
-                value={skillFilter}
-                onValueChange={setSkillFilter} // Correct setter for skillFilter
-              >
-                <SelectTrigger id="skill-filter" className="mt-2">
-                  <SelectValue placeholder="Any level" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All">Any</SelectItem>
-                  <SelectItem value="Beginner">Beginner</SelectItem>
-                  <SelectItem value="Intermediate">Intermediate</SelectItem>
-                  <SelectItem value="Advanced">Advanced</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Additional Notes */}
-            <div>
-              <Label htmlFor="additional-notes">Additional Notes</Label>
-              <Textarea
-                id="additional-notes"
-                value={additionalNotes}
-                onChange={(e) => setAdditionalNotes(e.target.value)}
-                className="mt-2"
-                placeholder="E.g., Italian cuisine, comfort food, vegan options, etc."
-              />
-            </div>
+            {filterSelect('cost', 'Budget', [['all', 'Any'], ['low', 'Low'], ['medium', 'Medium'], ['high', 'High']])}
+            {filterSelect('time', 'Time to Cook', [['all', 'Any'], ['quick', 'Quick (30 min or less)'], ['medium', 'Medium (31–60 min)'], ['long', 'Long (over 60 min)']])}
+            {filterSelect('skill', 'Skill Level', [['all', 'Any'], ['beginner', 'Beginner'], ['intermediate', 'Intermediate'], ['advanced', 'Advanced']])}
             <div className="flex justify-end space-x-2 pt-4">
-              <Button variant="outline" onClick={() => setShowFilterDialog(false)}>
+              <Button variant="outline" onClick={() => setShowMealPlanDialog(false)}>
                 Cancel
               </Button>
-              <Button onClick={handleFilterRecipes} className="bg-orange-600 hover:bg-orange-700 text-white">
-                Find Recipes
+              <Button onClick={() => generate(filters)} className="bg-orange-600 hover:bg-orange-700 text-white">
+                Generate Plan
               </Button>
             </div>
           </div>
         </DialogContent>
       </Dialog>
-
-      {/* Recipe Detail Dialog: Shows full recipe for an item in the *old* meal plan */}
-      <Dialog open={showRecipeDialog} onOpenChange={setShowRecipeDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{selectedMeal?.recipe.name}</DialogTitle>
-            <DialogDescription>
-              {selectedMeal?.day}'s meal
-            </DialogDescription>
-          </DialogHeader>
-          {selectedMeal && (
-            <div className="space-y-4 mt-4">
-              <div>
-                <h3 className="text-gray-900 mb-2 font-semibold">Ingredients</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  {selectedMeal.recipe.ingredients.map((ingredient, index) => (
-                    <li key={index} className="text-gray-700">{ingredient}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-gray-900 mb-2 font-semibold">Instructions</h3>
-                <p className="text-gray-700 whitespace-pre-wrap">{selectedMeal.recipe.instructions}</p>
-              </div>
-              <div className="flex space-x-4 text-sm border-t pt-4">
-                <span className="text-gray-600">Time: {selectedMeal.recipe.time} min</span>
-                <span className="text-gray-600">Skill: {selectedMeal.recipe.skillLevel}</span>
-                <span className="text-gray-600">Cost: {selectedMeal.recipe.cost}</span>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
-
-        {/* Generate Meal Plan Dialog: For setting filters for weekly plan generation */}
-        <Dialog open={showMealPlanDialog} onOpenChange={setShowMealPlanDialog}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Generate New Meal Plan</DialogTitle>
-              <DialogDescription>
-                Set your preferences for the weekly meal plan.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4 mt-4">
-              {/* Budget Filter */}
-              <div>
-                <Label htmlFor="budget-filter">Budget</Label>
-                <Select
-                    value={mealPlanBudget}
-                    onValueChange={setMealPlanBudget}
-                >
-                  <SelectTrigger id="budget-filter" className="mt-2">
-                    <SelectValue placeholder="Any budget" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Any</SelectItem>
-                    <SelectItem value="low">Low</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="high">High</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              {/* Time to Cook Filter */}
-              <div>
-                <Label htmlFor="time-to-cook-filter">Time to Cook</Label>
-                <Select
-                    value={mealPlanTime}
-                    onValueChange={setMealPlanTime}
-                >
-                  <SelectTrigger id="time-to-cook-filter" className="mt-2">
-                    <SelectValue placeholder="Any time" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Any</SelectItem>
-                    <SelectItem value="quick">Quick (30 min or less)</SelectItem>
-                    <SelectItem value="medium">Medium (30-60 min)</SelectItem>
-                    <SelectItem value="long">Long (60+ min)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              {/* Skill Level Filter */}
-              <div>
-                <Label htmlFor="skill-level-filter">Skill Level</Label>
-                <Select
-                    value={mealPlanSkill}
-                    onValueChange={setMealPlanSkill}
-                >
-                  <SelectTrigger id="skill-level-filter" className="mt-2">
-                    <SelectValue placeholder="Any level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Any</SelectItem>
-                    <SelectItem value="beginner">Beginner</SelectItem>
-                    <SelectItem value="intermediate">Intermediate</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex justify-end space-x-2 pt-4">
-                <Button variant="outline" onClick={() => setShowMealPlanDialog(false)} disabled={isGeneratingMealPlan}>
-                  Cancel
-                </Button>
-                <Button
-                    onClick={handleFilterAndGenerateMealPlan} // Triggers the two-step process
-                    disabled={isGeneratingMealPlan}
-                    className="bg-orange-600 hover:bg-orange-700 text-white"
-                >
-                  {isGeneratingMealPlan ? 'Filtering & Generating...' : 'Generate Plan'}
-                </Button>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
+    </div>
   );
 }

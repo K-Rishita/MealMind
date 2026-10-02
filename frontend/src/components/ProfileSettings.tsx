@@ -5,15 +5,8 @@ import { Label } from './ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { User } from 'lucide-react';
+import type { UserProfile } from '../lib/types';
 
-export type UserProfile = {
-  age?: string;
-  gender?: string;
-  height?: string;
-  weight?: string;
-  calorieGoal?: string;
-  diet?: string;
-};
 
 type ProfileSettingsProps = {
   profile: UserProfile;              // Current user profile data passed from the parent component

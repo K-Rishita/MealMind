@@ -6,7 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea'; 
 import ReactMarkdown from 'react-markdown'; 
-import type { PantryItem } from '../App';
+import { toast } from 'sonner';
+import { postApi } from '../lib/api';
+import { formatQuantity, type PantryItem } from '../lib/types';
 
 
 type RecipeGeneratorProps = {
@@ -41,65 +43,22 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
   const handleGenerateRecipes = async () => {
     setShowFilterDialog(false);
     setIsLoading(true);
-
-    // 1. COLLECT INGREDIENT LIST FROM PROPS
-    const ingredientsList = pantryItems
-    .map(item => `${item.quantity} of ${item.name}`)
-    .join(', ');
-
-    // 2. CONSTRUCT THE DYNAMIC PROMPT USING STATE VARIABLES
-    const prompt = `
-      You are an expert chef and recipe generator. Create one detailed recipe based on the following:
-
-      Available Ingredients: ${ingredientsList || 'None listed. Suggest a recipe with common items.'}
-      Cost Preference: ${costFilter}
-      Time Preference: ${timeFilter}
-      Skill Level: ${skillFilter}
-      
-      Additional Notes/Dietary Restrictions: ${userNotes || 'N/A'}
-
-      The recipe must include:
-      1. A creative recipe title.
-      2. A short description.
-      3. A clear list of ingredients (with required amounts).
-      4. Step-by-step instructions. (These MUST be in paragraph format, comma-separated. Do not use bullet points.)
-      
-      Please present the output in **Markdown format** for easy reading.
-      Ensure that the output is extremely short. Keep it under 20 lines of text.
-    `;
-
     try {
-      const backendUrl = 'http://localhost:5000/api/generate-recipe'; // Target the Python/Flask backend
-
-      const response = await fetch(backendUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: prompt}), // Send the dynamic prompt to the backend
+      // The server builds the prompt from your stored pantry and diet; we only send filters and notes.
+      const data = await postApi<{ recipe: string }>('/api/generate-recipe', {
+        cost: costFilter,
+        time: timeFilter,
+        skill: skillFilter,
+        notes: userNotes.trim(),
       });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Assuming the backend returns the generated text under the key 'recipe'
       setGeneratedRecipe(data.recipe);
-
+      setShowRecipeDialog(true);
+      setUserNotes('');
     } catch (error) {
-      console.error('Error fetching recipe from backend:', error);
-      setGeneratedRecipe("Failed to load recipe. Check if the Python backend server is running.");
+      toast.error(error instanceof Error ? error.message : String(error));
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
-    setShowRecipeDialog(true);
-    // Reset filters and notes after generation
-    setCostFilter('all');
-    setTimeFilter('all');
-    setSkillFilter('all');
-    setUserNotes('');
   };
 
   return (
@@ -129,7 +88,7 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
               <Card key={item.id}>
                 <CardContent className="p-4">
                   <p className="text-gray-900">{item.name}</p>
-                  <p className="text-gray-500 text-sm">{item.quantity}</p>
+                  <p className="text-gray-500 text-sm">{formatQuantity(item)}</p>
                 </CardContent>
               </Card>
             ))
@@ -152,12 +111,12 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
           </DialogHeader>
           <div className="space-y-4 mt-4">
             {/* Cost Select */}
-            <div><Label htmlFor="cost-filter">Cost</Label><Select id="cost-filter" value={costFilter} onValueChange={setCostFilter} className="mt-2"><SelectTrigger><SelectValue placeholder="Select cost range">{costFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="low">Low</SelectItem><SelectItem value="medium">Medium</SelectItem><SelectItem value="high">High</SelectItem></SelectContent></Select></div>
+            <div><Label htmlFor="cost-filter">Cost</Label><Select value={costFilter} onValueChange={setCostFilter}><SelectTrigger id="cost-filter" className="mt-2"><SelectValue placeholder="Select cost range">{costFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="low">Low</SelectItem><SelectItem value="medium">Medium</SelectItem><SelectItem value="high">High</SelectItem></SelectContent></Select></div>
             {/* Time Select */}
-            <div><Label htmlFor="time-filter">Preparation Time</Label><Select id="time-filter" value={timeFilter} onValueChange={setTimeFilter} className="mt-2"><SelectTrigger><SelectValue placeholder="Select time range">{timeFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="quick">Quick (30 min or less)</SelectItem><SelectItem value="medium">Medium (30-60 min)</SelectItem><SelectItem value="long">Long (60+ min)</SelectItem></SelectContent></Select></div>
+            <div><Label htmlFor="time-filter">Preparation Time</Label><Select value={timeFilter} onValueChange={setTimeFilter}><SelectTrigger id="time-filter" className="mt-2"><SelectValue placeholder="Select time range">{timeFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="quick">Quick (30 min or less)</SelectItem><SelectItem value="medium">Medium (30-60 min)</SelectItem><SelectItem value="long">Long (60+ min)</SelectItem></SelectContent></Select></div>
             {/* Skill Select */}
             {/* NOTE: If you previously had an issue where skill level incorrectly set time, ensure onValueChange={setSkillFilter} is used here, though in the provided code snippet it's set to setTimeFilter, which I assume is an error from a previous iteration and should be fixed in production code. */}
-            <div><Label htmlFor="skill-filter">Skill Level</Label><Select id="skill-filter" value={skillFilter} onValueChange={setSkillFilter} className="mt-2"><SelectTrigger><SelectValue placeholder="Select skill level">{skillFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="beginner">Beginner</SelectItem><SelectItem value="intermediate">Intermediate</SelectItem><SelectItem value="advanced">Advanced</SelectItem></SelectContent></Select></div>
+            <div><Label htmlFor="skill-filter">Skill Level</Label><Select value={skillFilter} onValueChange={setSkillFilter}><SelectTrigger id="skill-filter" className="mt-2"><SelectValue placeholder="Select skill level">{skillFilter}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All</SelectItem><SelectItem value="beginner">Beginner</SelectItem><SelectItem value="intermediate">Intermediate</SelectItem><SelectItem value="advanced">Advanced</SelectItem></SelectContent></Select></div>
 
             {/* Additional Notes Textarea */}
             <div>
@@ -167,6 +126,7 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
                 value={userNotes}
                 onChange={(e) => setUserNotes(e.target.value)}
                 placeholder="e.g., Must be gluten-free, or needs to be a spicy dish."
+                maxLength={500}
                 className="mt-2"
               />
             </div>

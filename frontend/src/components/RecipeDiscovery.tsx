@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardContent } from './ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
-import { Search, Utensils } from 'lucide-react';
-import type { Recipe } from '../App';
+import { Search } from 'lucide-react';
+import { RecipeDialog } from './RecipeDialog';
+import type { Recipe } from '../lib/types';
 
 type RecipeDiscoveryProps = {
   recipes: Recipe[];                 // Array of all available recipes to display
@@ -20,28 +20,8 @@ export function RecipeDiscovery({ recipes = [], onMakeRecipe }: RecipeDiscoveryP
   const [timeFilter, setTimeFilter] = useState<string>('all');
   const [skillFilter, setSkillFilter] = useState<string>('all');
 
-  // State for displaying the detailed recipe dialog
+  // Recipe shown in the detail dialog (null = closed)
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
-  const [showRecipeDialog, setShowRecipeDialog] = useState(false);
-
-  /**
-   * Sets the selected recipe and opens the detail dialog.
-   * @param recipe The recipe object to display.
-   */
-  const handleShowMore = (recipe: Recipe) => {
-    setSelectedRecipe(recipe);
-    setShowRecipeDialog(true);
-  };
-
-  /**
-   * Fires the external callback function to initiate the cooking process for the selected recipe.
-   */
-  const handleCookClick = () => {
-    if (selectedRecipe) {
-        onMakeRecipe(selectedRecipe);
-        setShowRecipeDialog(false); 
-    }
-  };
 
   /**
    * Core filtering logic that applies search query and drop-down filters.
@@ -156,7 +136,7 @@ export function RecipeDiscovery({ recipes = [], onMakeRecipe }: RecipeDiscoveryP
                 <Button 
                   className="w-full mt-4" 
                   variant="outline"
-                  onClick={() => handleShowMore(recipe)}
+                  onClick={() => setSelectedRecipe(recipe)}
                 >
                   View Details & Cook
                 </Button>
@@ -171,59 +151,7 @@ export function RecipeDiscovery({ recipes = [], onMakeRecipe }: RecipeDiscoveryP
         )}
       </div>
 
-      {/* Recipe Detail Dialog */}
-      <Dialog open={showRecipeDialog} onOpenChange={setShowRecipeDialog}>
-        {/* Set max height and use flex column to manage scrollable content */}
-        <DialogContent className="max-h-[90vh] flex flex-col p-0 overflow-hidden">
-          
-          <DialogHeader className="p-6 pb-2">
-            <DialogTitle className="text-2xl">{selectedRecipe?.name || 'Recipe Details'}</DialogTitle>
-            <DialogDescription>
-               {selectedRecipe?.time} min • {selectedRecipe?.skillLevel} • {selectedRecipe?.cost} cost
-            </DialogDescription>
-          </DialogHeader>
-
-          {/* Scrollable Content Area */}
-          <div className="p-6 pt-2 overflow-y-auto flex-1">
-            {selectedRecipe && (
-              <div className="space-y-6">
-                {/* Ingredients List */}
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-lg">Ingredients</h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {(selectedRecipe.ingredients || []).map((ingredient, index) => (
-                      <li key={index} className="text-gray-700 flex items-center bg-gray-50 p-2 rounded">
-                        <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
-                        {ingredient}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Instructions Text */}
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-lg">Instructions</h3>
-                  <div className="text-gray-700 whitespace-pre-wrap leading-relaxed p-4 bg-gray-50 rounded-lg">
-                    {selectedRecipe.instructions || 'No instructions provided.'}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Sticky Footer with Cook Button */}
-          <div className="p-6 border-t bg-gray-50">
-            <Button 
-              onClick={handleCookClick} 
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white text-lg h-12"
-            >
-              <Utensils className="mr-2 h-5 w-5" />
-              Cook This Meal (Update Pantry)
-            </Button>
-          </div>
-
-        </DialogContent>
-      </Dialog>
+      <RecipeDialog recipe={selectedRecipe} onClose={() => setSelectedRecipe(null)} onCook={onMakeRecipe} />
     </div>
   );
 }

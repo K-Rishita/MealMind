@@ -1,0 +1,430 @@
+{
+ "Dal Tadka (Yellow Lentil Curry)": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic Spaghetti Carbonara": [
+  "lunch",
+  "dinner"
+ ],
+ "Sheet Pan Lemon Herb Salmon and Asparagus": [
+  "dinner"
+ ],
+ "Authentic Pho (Vietnamese Noodle Soup)": [
+  "lunch",
+  "dinner"
+ ],
+ "Vegan Chocolate Avocado Mousse": [
+  "dessert"
+ ],
+ "Keto Chicken and Broccoli Stir-fry": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic French Onion Soup (Soupe à l'Oignon)": [
+  "lunch",
+  "dinner"
+ ],
+ "Moroccan Chicken Tagine with Apricots and Almonds": [
+  "dinner"
+ ],
+ "Overnight Oats (5-Minute Prep)": [
+  "breakfast"
+ ],
+ "Paleo Beef and Vegetable Skewers": [
+  "lunch",
+  "dinner"
+ ],
+ "Creamy Vegan Tomato Soup": [
+  "lunch",
+  "dinner"
+ ],
+ "Thai Green Curry with Tofu": [
+  "lunch",
+  "dinner"
+ ],
+ "Mediterranean Quinoa Salad": [
+  "lunch",
+  "side"
+ ],
+ "Shrimp Scampi with Zucchini Noodles": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic Beef Bourguignon": [
+  "dinner"
+ ],
+ "Gluten-Free Banana Pancakes": [
+  "breakfast"
+ ],
+ "Japanese Tempura Vegetables and Shrimp": [
+  "lunch",
+  "dinner"
+ ],
+ "Low-Cost Chicken and Rice": [
+  "lunch",
+  "dinner"
+ ],
+ "Gluten-Free Keto Pancakes (Cream Cheese Base)": [
+  "breakfast"
+ ],
+ "Vegetarian Chili (Three Bean)": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic French Crêpes Suzette (Advanced)": [
+  "dessert"
+ ],
+ "Easy 3-Ingredient Peanut Butter Cookies": [
+  "snack",
+  "dessert"
+ ],
+ "Simple Tuna Melt Sandwich (Pescatarian)": [
+  "lunch"
+ ],
+ "Keto Fat Bombs (Raspberry Cheesecake)": [
+  "snack",
+  "dessert"
+ ],
+ "Classic French Beef Wellington": [
+  "dinner"
+ ],
+ "Indian Samosa (Vegetarian Appetizer)": [
+  "snack",
+  "side"
+ ],
+ "Paleo Sweet Potato Toast with Avocado": [
+  "breakfast",
+  "snack"
+ ],
+ "Quick Vegan Black Bean Burgers": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic Tiramisu (Italian Dessert)": [
+  "dessert"
+ ],
+ "Pescatarian Tuna Poke Bowl": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic Hummus (Middle Eastern Dip)": [
+  "snack",
+  "side"
+ ],
+ "Keto Friendly Coconut Chicken Curry": [
+  "lunch",
+  "dinner"
+ ],
+ "Homemade Marinara Sauce (Italian Base)": [],
+ "Classic French Beef Tartare (High Skill)": [
+  "dinner"
+ ],
+ "Simple Pesto Chicken (Keto/Gluten-Free)": [
+  "lunch",
+  "dinner"
+ ],
+ "Vegan Red Lentil Soup (Turkish Mercimek Çorbası)": [
+  "lunch",
+  "dinner"
+ ],
+ "Japanese Ramen Broth (Intermediate)": [],
+ "Low-Calorie Chicken Lettuce Wraps (Asian)": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic New York Style Cheesecake": [
+  "dessert"
+ ],
+ "Simple Green Smoothie (Vegan/Gluten-Free)": [
+  "breakfast",
+  "snack"
+ ],
+ "Authentic Mexican Enchiladas Verdes": [
+  "lunch",
+  "dinner"
+ ],
+ "Pescatarian Fish Tacos with Cabbage Slaw": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced Croissants (French Pastry)": [
+  "breakfast"
+ ],
+ "Simple Homemade Pizza Dough": [],
+ "Paleo Zucchini Fritters": [
+  "lunch",
+  "snack",
+  "side"
+ ],
+ "Easy Lemon Ricotta Pasta (Vegetarian)": [
+  "lunch",
+  "dinner"
+ ],
+ "Indian Chicken Tikka Masala (Intermediate)": [
+  "dinner"
+ ],
+ "Keto Avocado Egg Boats": [
+  "breakfast"
+ ],
+ "Vegan Lentil Shepherd's Pie (British/Irish)": [
+  "dinner"
+ ],
+ "Simple Panna Cotta (Italian Dessert)": [
+  "dessert"
+ ],
+ "Paleo Cauliflower Fried Rice": [
+  "lunch",
+  "dinner"
+ ],
+ "Quick Low-Cost Minestrone Soup (Italian)": [
+  "lunch",
+  "dinner"
+ ],
+ "Classic French Soufflé au Fromage (Advanced)": [
+  "lunch",
+  "dinner"
+ ],
+ "High Protein Tofu Scramble (Vegan)": [
+  "breakfast"
+ ],
+ "Keto Cheesy Cauliflower Mash": [
+  "side"
+ ],
+ "Thai Mango Sticky Rice (Khao Niao Mamuang)": [
+  "dessert"
+ ],
+ "Paleo Salmon Burgers": [
+  "lunch",
+  "dinner"
+ ],
+ "Vegan Chocolate Chip Cookies (Dairy-Free)": [
+  "snack",
+  "dessert"
+ ],
+ "Quick Low-Cost Chicken Noodle Soup": [
+  "lunch",
+  "dinner"
+ ],
+ "Spicy Thai Beef Salad (Yum Nua)": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Indian Basmati Rice": [
+  "side"
+ ],
+ "Intermediate Tofu Katsu Curry (Japanese)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Fathead Pizza Dough": [],
+ "French Ratatouille (Vegan/Gluten-Free)": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced Beef Wellington Sauce (Madeira Reduction)": [],
+ "Homemade Gnocchi with Sage Butter Sauce (Italian)": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Low-Cost Black Beans and Rice": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced Sushi Rolls (Japanese)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Bacon-Wrapped Asparagus": [
+  "snack",
+  "side"
+ ],
+ "Vegan Mushroom Stroganoff (Comfort Food)": [
+  "lunch",
+  "dinner"
+ ],
+ "French Crème Brûlée (Advanced)": [
+  "dessert"
+ ],
+ "Gluten-Free Chicken and Vegetable Curry": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Low-Cost Pasta Aglio e Olio": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced Beef Stroganoff (Russian/American)": [
+  "dinner"
+ ],
+ "Classic Coleslaw (Side Dish)": [
+  "side"
+ ],
+ "Dairy-Free Chocolate Ice Cream (Vegan)": [
+  "dessert"
+ ],
+ "Keto Friendly Chicken Pot Pie Filling (No Crust)": [
+  "dinner"
+ ],
+ "Low-Cost Tuna Pasta Salad (Pescatarian)": [
+  "lunch"
+ ],
+ "Classic French Hollandaise Sauce (Advanced)": [],
+ "Vegan Roasted Red Pepper Pasta Sauce": [],
+ "Advanced Beef Consommé (Clear Soup)": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Low-Cost Baked Potato": [
+  "side"
+ ],
+ "Dairy-Free Coconut Whipped Cream (Vegan)": [],
+ "Intermediate Indian Butter Chicken (Murgh Makhani)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Breakfast Skillet": [
+  "breakfast"
+ ],
+ "Advanced Chocolate Lava Cakes (Moulleux au Chocolat)": [
+  "dessert"
+ ],
+ "Vegan Falafel (Middle Eastern)": [
+  "lunch",
+  "snack"
+ ],
+ "Low-Cost Easy Chili (American Comfort Food)": [
+  "lunch",
+  "dinner"
+ ],
+ "Paleo Chicken and Sweet Potato Hash": [
+  "breakfast",
+  "lunch"
+ ],
+ "Gluten-Free Flourless Chocolate Cake (Torte)": [
+  "dessert"
+ ],
+ "Vegan Overnight Chia Seed Pudding": [
+  "breakfast",
+  "snack"
+ ],
+ "Pescatarian Shrimp and Grits (Southern American)": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Homemade Guacamole (Mexican)": [
+  "snack",
+  "side"
+ ],
+ "Dairy-Free Low-Cost Oatmeal (Vegan)": [
+  "breakfast"
+ ],
+ "Advanced Chocolate Mousse (Classic French)": [
+  "dessert"
+ ],
+ "Low-Cost Canned Soup Hack (Intermediate)": [
+  "lunch"
+ ],
+ "Indian Aloo Gobi (Potato and Cauliflower)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Low-Carb Chili": [
+  "lunch",
+  "dinner"
+ ],
+ "Simple Low-Cost Scrambled Eggs": [
+  "breakfast"
+ ],
+ "Pescatarian Garlic Butter Steamed Mussels": [
+  "dinner"
+ ],
+ "Paleo Grilled Pork Chops with Herbs": [
+  "dinner"
+ ],
+ "Gluten-Free Chocolate Brownies (Fudgy)": [
+  "snack",
+  "dessert"
+ ],
+ "Indian Chana Masala (Chickpea Curry)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Chicken Stir-fry with Shirataki Noodles": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced French Duck Confit (Traditional)": [
+  "dinner"
+ ],
+ "Simple Low-Cost Peanut Butter Sandwich": [
+  "lunch",
+  "snack"
+ ],
+ "Vegan Baked Potatoes with Hummus and Chives": [
+  "lunch",
+  "side"
+ ],
+ "Pescatarian Shrimp Ceviche (Peruvian/Mexican)": [
+  "lunch",
+  "snack"
+ ],
+ "High-Fiber Vegan Black Bean Soup": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Egg Salad": [
+  "lunch",
+  "snack"
+ ],
+ "Paleo Friendly Chicken Skewers with Veggies": [
+  "lunch",
+  "dinner"
+ ],
+ "Advanced Japanese Agedashi Tofu": [
+  "side"
+ ],
+ "Simple Low-Cost Buttered Noodles": [
+  "lunch",
+  "side"
+ ],
+ "Vegan Banana Bread (Gluten-Free Option)": [
+  "breakfast",
+  "snack"
+ ],
+ "Pescatarian Tuna Salad (Classic Deli Style)": [
+  "lunch"
+ ],
+ "Keto Friendly Chicken Parmesan (No Breadcrumbs)": [
+  "dinner"
+ ],
+ "Paleo Friendly Chicken Fajita Bowl": [
+  "lunch",
+  "dinner"
+ ],
+ "Low-Cost Tuna Casserole (Classic American)": [
+  "dinner"
+ ],
+ "Advanced French Mille-Feuille (Napoleon)": [
+  "dessert"
+ ],
+ "Simple Low-Cost Grilled Cheese Sandwich": [
+  "lunch"
+ ],
+ "Vegan Red Thai Curry (Vegetable)": [
+  "lunch",
+  "dinner"
+ ],
+ "Keto Friendly Keto Bread (Almond Flour)": [
+  "breakfast",
+  "side"
+ ],
+ "Paleo Friendly Chicken Chili": [
+  "lunch",
+  "dinner"
+ ],
+ "Pescatarian Shrimp Pad Thai (Thai Noodles)": [
+  "lunch",
+  "dinner"
+ ]
+}
