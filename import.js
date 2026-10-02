@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 const fs = require('fs');
 
 // --- 1. CONFIGURATION ---
-const SERVICE_ACCOUNT_PATH = 'mealmind-47927-firebase-adminsdk-fbsvc-aed29e4866.json'; // Path to the key file
+const SERVICE_ACCOUNT_PATH = process.env.SERVICE_ACCOUNT_PATH || 'serviceAccountKey.json'; // Path to the key file (git-ignored)
 const DATA_FILE_PATH = 'Recipes.json'; // Path to your JSON data file
 const TARGET_COLLECTION = 'Recipes';                         // The Firestore collection name
 

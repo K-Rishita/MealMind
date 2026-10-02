@@ -3,14 +3,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-//Web app's Firebase configuration
+//Web app's Firebase configuration (values come from frontend/.env, see .env.example)
 const firebaseConfig = {
-  apiKey: "AIzaSyAsrL297pAEH1SsHpsnLYtNpejpsbibxAQ",
-  authDomain: "mealmind-47927.firebaseapp.com",
-  projectId: "mealmind-47927",
-  storageBucket: "mealmind-47927.firebasestorage.app",
-  messagingSenderId: "1033597547642",
-  appId: "1:1033597547642:web:2798b6edcf3251e5c2b7c3",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
