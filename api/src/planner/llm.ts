@@ -133,11 +133,14 @@ export function modelFromSpec(spec: string, keys: { google?: string; openrouter?
   throw new Error(`Unknown model provider in "${spec}" (use google: or openrouter:)`);
 }
 
-/** Free models first, then Gemini on the Google free tier, then paid Gemini via OpenRouter. */
+/**
+ * Free models first, then Gemini on the Google free tier, then paid Gemini via OpenRouter.
+ * Only models with a provider that supports JSON-schema output are listed (free Gemma's
+ * provider only offers plain JSON mode, so it is left out).
+ */
 export const DEFAULT_MODEL_CHAIN = [
-  'openrouter:google/gemma-4-31b-it:free',
-  'openrouter:qwen/qwen3.8-27b:free',
   'openrouter:nvidia/nemotron-3-super-120b-a12b:free',
+  'openrouter:qwen/qwen3.8-27b:free',
   'google:gemini-2.5-flash',
   'openrouter:google/gemini-2.5-flash',
 ];

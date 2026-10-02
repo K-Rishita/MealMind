@@ -20,8 +20,8 @@ export const SYSTEMS = ['baseline-app', 'baseline-fixed', 'grounded', 'rules-onl
 export type SystemName = (typeof SYSTEMS)[number];
 
 // One model per run, for every system, so differences come from the system design and not the model.
-// The shipped app used gemini-2.5-flash.
-export const DEFAULT_EVAL_MODEL = 'google:gemini-2.5-flash';
+// Default: a free model whose provider supports JSON-schema output. (The shipped app used gemini-2.5-flash.)
+export const DEFAULT_EVAL_MODEL = 'openrouter:nvidia/nemotron-3-super-120b-a12b:free';
 
 /** Folder name for a model spec, e.g. "openrouter:google/gemma-4-31b-it:free" -> "openrouter-google-gemma-4-31b-it-free". */
 export const modelSlug = (spec: string) => spec.replace(/[^a-zA-Z0-9.]+/g, '-');
@@ -114,8 +114,11 @@ async function main() {
             // The planner handles its own retry and fallback; model errors become a fallback plan.
             const counted = countingModel(model!);
             const result = await generatePlan(recipes, c.request, counted);
-            const quota = result.status === 'ok' && result.attempts.find((a) => a.errors.some((e) => /429|RESOURCE_EXHAUSTED/.test(e)));
-            if (quota) throw new Error(quota.errors.join(' '));
+            // If every attempt failed because the model call itself failed (rate limit, no provider),
+            // the plan came from the fallback without the model ever answering: that is an
+            // infrastructure failure, not a measurement, so surface it instead of saving it.
+            const callFailures = result.status === 'ok' ? result.attempts.flatMap((a) => a.errors).filter((e) => e.startsWith('Model call failed')) : [];
+            if (result.status === 'ok' && callFailures.length === result.attempts.length) throw new Error(callFailures.join(' | '));
             record.text = JSON.stringify(result);
             record.modelCalls = counted.calls;
           } else {
@@ -127,8 +130,8 @@ async function main() {
         } catch (err) {
           const msg = String((err as Error)?.message ?? err);
           const is429 = msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
-          if (is429 && /PerDay/i.test(msg)) {
-            console.error('\nDaily quota exhausted. Re-run later; finished calls are saved.');
+          if (is429 && /PerDay|per-day|free-models-per-day/i.test(msg)) {
+            console.error('\nDaily quota exhausted. Re-run later; finished calls are saved.\n' + msg.slice(0, 300));
             process.exit(2);
           }
           const transient = is429 || /\b(500|502|503|504)\b|UNAVAILABLE|fetch failed/i.test(msg);
@@ -137,16 +140,15 @@ async function main() {
             await sleep(wait);
             continue;
           }
-          record.latencyMs = Math.round(performance.now() - t0);
-          record.error = msg.slice(0, 2000);
-          failed++;
-          break;
+          // A non-temporary failure (bad model id, no provider supports the request, auth):
+          // stop the whole run rather than spend more calls on the same error.
+          console.error(`\nStopping: ${c.id} failed with a non-retryable error:\n${msg.slice(0, 500)}`);
+          process.exit(3);
         }
       }
-      if (record.error === null || !/\b(429|5\d\d)\b|UNAVAILABLE|fetch failed/i.test(record.error)) {
-        // Only cache real outcomes; infrastructure failures are retried on the next run.
-        writeFileSync(join(outDir, `${c.id}.r${run}.json`), JSON.stringify(record, null, 2));
-      }
+      // Only real model outcomes are saved; anything else is retried on the next run.
+      if (record.error === null) writeFileSync(join(outDir, `${c.id}.r${run}.json`), JSON.stringify(record, null, 2));
+      else failed++;
       done++;
       process.stdout.write(`\r${done} done, ${failed} errors`);
     }
