@@ -5,38 +5,28 @@ import { Label } from './ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChefHat } from 'lucide-react';
 
-import { auth } from '../firebase'; 
-import { signInWithEmailAndPassword } from 'firebase/auth'; 
+import { toast } from 'sonner';
+import { supabase } from '../lib/supabase';
 
 type LoginProps = {
-  onLogin: () => void;           // Callback function fired on successful login to navigate to the app
   onBackToLanding: () => void;   // Callback to navigate back to the landing page
   onSwitchToSignUp: () => void;  // Callback to switch the view to the Sign Up form
 };
 
-export function Login({ onLogin, onBackToLanding, onSwitchToSignUp }: LoginProps) {
+export function Login({ onBackToLanding, onSwitchToSignUp }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   /**
-   * Handles the form submission for user login using Firebase.
+   * Signs in with Supabase. On success the auth listener in App navigates to Home.
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      // Calls the Firebase sign-in function
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("Logged in:", auth.currentUser);
-      alert("Signed in successfully!");
-      onLogin(); 
-    } catch (err: any) {
-      alert(err.message);
-    } finally {
-      setLoading(false);
-    }
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    setLoading(false);
+    if (error) toast.error(error.message);
   };
 
   return (

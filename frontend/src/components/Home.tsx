@@ -3,9 +3,8 @@ import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
 import { Card, CardContent } from './ui/card';
-import type { PantryItem, MealPlan } from '../App';
+import { describeItem, formatQuantity, type MealPlan, type PantryItem } from '../lib/types';
 
 // Define the expected structured response for a single day in the AI-generated plan
 type RawMealPlanDay = {
@@ -26,17 +25,12 @@ type HomeProps = {
   isStructuredMode: boolean; // Controls whether to show single recipe finder or meal plan interface
   mealPlan: MealPlan[]; // Default/Existing meal plan structure
   onNavigateToPantry: () => void;
-  // Function to fetch relevant recipe names from the database based on user filters
-  fetchRecipesByFilters: (filters: { costOfIngredients: string; timeTakenToCook: string; skillLevel: string; }) => Promise<string[]>;
+  onWhatCanIMake: () => void; // Opens the Recipe Generator
+  // Fetches names of recipes matching the meal-plan filters
+  fetchRecipeNames: (filters: { cost: string; time: string; skill: string }) => Promise<string[]>;
 };
 
-export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPantry, fetchRecipesByFilters }: HomeProps) {
-  // State for single recipe generation filters ('What can I make now?')
-  const [showFilterDialog, setShowFilterDialog] = useState(false);
-  const [costFilter, setCostFilter] = useState<string>('all');
-  const [timeFilter, setTimeFilter] = useState<string>('all');
-  const [skillFilter, setSkillFilter] = useState<string>('all');
-  const [additionalNotes, setAdditionalNotes] = useState<string>('');
+export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPantry, onWhatCanIMake, fetchRecipeNames }: HomeProps) {
   const [showRecipeDialog, setShowRecipeDialog] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState<MealPlan | null>(null);
 
@@ -51,30 +45,9 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
   const [rawMealPlanResponse, setRawMealPlanResponse] = useState<string | null>(null); // For debugging failed parsing
   const [generatedMealPlan, setGeneratedMealPlan] = useState<RawMealPlanDay[] | null>(null); // The final, structured plan
 
-  const handleWhatCanIMake = () => {
-    setShowFilterDialog(true);
-  };
-
   const handleShowRecipe = (meal: MealPlan) => {
     setSelectedMeal(meal);
     setShowRecipeDialog(true);
-  };
-
-  /**
-   * Placeholder handler for the single "Find Recipes" button (in the filter dialog).
-   * In a complete app, this would trigger a single recipe AI generation.
-   */
-  const handleFilterRecipes = async () => {
-    setShowFilterDialog(false);
-    console.log('Filters for single recipe:', { costFilter, timeFilter, skillFilter, additionalNotes });
-
-    // TODO: Implement the fetch call for single recipe generation here
-
-    // Reset filters
-    setCostFilter('all');
-    setTimeFilter('all');
-    setSkillFilter('all');
-    setAdditionalNotes('');
   };
 
   /**
@@ -87,16 +60,11 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
     setRawMealPlanResponse(null);
     setShowMealPlanDialog(false);
 
-    const filters = {
-      costOfIngredients: mealPlanBudget,
-      timeTakenToCook: mealPlanTime,
-      skillLevel: mealPlanSkill
-    };
+    const filters = { cost: mealPlanBudget, time: mealPlanTime, skill: mealPlanSkill };
 
     let availableRecipeNames: string[] = [];
     try {
-      // Fetch recipe names using the prop function
-      availableRecipeNames = await fetchRecipesByFilters(filters);
+      availableRecipeNames = await fetchRecipeNames(filters);
     } catch (error) {
       console.error("Error retrieving recipes from Firebase:", error);
       alert("Error fetching recipes. Generating plan without recipe constraints.");
@@ -117,9 +85,7 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
     setRawMealPlanResponse(null);
 
     // 1. Collect Ingredients for context
-    const ingredientsList = pantryItems
-    .map(item => `${item.quantity} of ${item.name}`)
-    .join(', ');
+    const ingredientsList = pantryItems.map(describeItem).join(', ');
 
     // 2. Construct the Dynamic Prompt, including the filtered recipe names
     const recipeNamesList = availableRecipeNames.join(', ');
@@ -189,8 +155,6 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
         setRawMealPlanResponse(`AI output was received but failed to parse as JSON. Raw output starts: ${rawTextResponse.substring(0, 300)}...`);
       }
 
-      setRawMealPlanResponse(rawTextResponse); // Set raw response for potential debug viewing
-
     } catch (error) {
       console.error('Error fetching meal plan from backend:', error);
       setRawMealPlanResponse(`Failed to fetch meal plan. Error: ${error instanceof Error ? error.message : String(error)}`);
@@ -204,9 +168,6 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
     setMealPlanTime('all');
     setMealPlanSkill('all');
   };
-
-  // Determine which meal plan array to display (AI-generated takes precedence)
-  const currentPlan = generatedMealPlan || mealPlan;
 
   // Function to render the new, detailed AI-generated meal plan structure
   const renderNewMealCard = (meal: RawMealPlanDay) => (
@@ -251,7 +212,7 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
           {!isStructuredMode ? (
               // Mode 1: Single Recipe Finder
               <Button
-                  onClick={handleWhatCanIMake}
+                  onClick={onWhatCanIMake}
                   size="lg"
                   className="px-8 py-6 text-lg bg-gray-900 hover:bg-gray-800 text-white"
               >
@@ -298,111 +259,22 @@ export function Home({ pantryItems, isStructuredMode, mealPlan, onNavigateToPant
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {pantryItems
-            // Filter out items without a name (to handle "ghost" items)
-            .filter(item => item.name && item.name.trim() !== '')
             .slice(0, 8) // Show up to 8 items for a quick preview
             .map((item) => (
               <Card key={item.id} className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <p className="text-gray-900 font-medium">{item.name}</p>
-                  <p className="text-gray-500 text-sm bg-gray-100 inline-block px-2 py-0.5 rounded mt-1">{item.quantity}</p>
+                  {formatQuantity(item) && <p className="text-gray-500 text-sm bg-gray-100 inline-block px-2 py-0.5 rounded mt-1">{formatQuantity(item)}</p>}
                 </CardContent>
               </Card>
           ))}
-          {pantryItems.filter(item => item.name && item.name.trim() !== '').length === 0 && (
+          {pantryItems.length === 0 && (
              <div className="col-span-full text-center py-8 bg-gray-50 border border-dashed rounded-lg">
                 <p className="text-gray-500">Your pantry is empty.</p>
              </div>
           )}
         </div>
       </div>
-
-      {/* Filter Dialog: For "What can I make now?" (Single Recipe) */}
-      <Dialog open={showFilterDialog} onOpenChange={setShowFilterDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Filter Recipes</DialogTitle>
-            <DialogDescription>
-              Choose your preferences to find recipes that match your criteria.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4 mt-4">
-            {/* Cost Filter */}
-            <div>
-              <Label htmlFor="cost-filter">Cost</Label>
-              <Select
-                value={costFilter}
-                onValueChange={setCostFilter}
-              >
-                <SelectTrigger id="cost-filter" className="mt-2">
-                  <SelectValue placeholder="Any cost" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Any</SelectItem>
-                  <SelectItem value="Low">Low</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="High">High</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Time Filter */}
-            <div>
-              <Label htmlFor="time-filter">Time</Label>
-              <Select
-                value={timeFilter}
-                onValueChange={setTimeFilter}
-              >
-                <SelectTrigger id="time-filter" className="mt-2">
-                  <SelectValue placeholder="Any time" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All">Any</SelectItem>
-                  <SelectItem value="quick">Quick (30 min or less)</SelectItem>
-                  <SelectItem value="medium">Medium (30-60 min)</SelectItem>
-                  <SelectItem value="long">Long (60+ min)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Skill Level Filter */}
-            <div>
-              <Label htmlFor="skill-filter">Skill Level</Label>
-              <Select
-                value={skillFilter}
-                onValueChange={setSkillFilter} // Correct setter for skillFilter
-              >
-                <SelectTrigger id="skill-filter" className="mt-2">
-                  <SelectValue placeholder="Any level" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All">Any</SelectItem>
-                  <SelectItem value="Beginner">Beginner</SelectItem>
-                  <SelectItem value="Intermediate">Intermediate</SelectItem>
-                  <SelectItem value="Advanced">Advanced</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Additional Notes */}
-            <div>
-              <Label htmlFor="additional-notes">Additional Notes</Label>
-              <Textarea
-                id="additional-notes"
-                value={additionalNotes}
-                onChange={(e) => setAdditionalNotes(e.target.value)}
-                className="mt-2"
-                placeholder="E.g., Italian cuisine, comfort food, vegan options, etc."
-              />
-            </div>
-            <div className="flex justify-end space-x-2 pt-4">
-              <Button variant="outline" onClick={() => setShowFilterDialog(false)}>
-                Cancel
-              </Button>
-              <Button onClick={handleFilterRecipes} className="bg-orange-600 hover:bg-orange-700 text-white">
-                Find Recipes
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
 
       {/* Recipe Detail Dialog: Shows full recipe for an item in the *old* meal plan */}
       <Dialog open={showRecipeDialog} onOpenChange={setShowRecipeDialog}>

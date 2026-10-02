@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
 import { Search, Utensils } from 'lucide-react';
-import type { Recipe } from '../App';
+import type { Recipe } from '../lib/types';
 
 type RecipeDiscoveryProps = {
   recipes: Recipe[];                 // Array of all available recipes to display
@@ -203,9 +203,15 @@ export function RecipeDiscovery({ recipes = [], onMakeRecipe }: RecipeDiscoveryP
                 {/* Instructions Text */}
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2 text-lg">Instructions</h3>
-                  <div className="text-gray-700 whitespace-pre-wrap leading-relaxed p-4 bg-gray-50 rounded-lg">
-                    {selectedRecipe.instructions || 'No instructions provided.'}
-                  </div>
+                  {selectedRecipe.steps.length > 0 ? (
+                    <ol className="list-decimal list-outside space-y-2 pl-9 pr-4 py-4 bg-gray-50 rounded-lg text-gray-700 leading-relaxed">
+                      {selectedRecipe.steps.map((step, index) => (
+                        <li key={index}>{step}</li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="text-gray-500">No instructions provided.</p>
+                  )}
                 </div>
               </div>
             )}

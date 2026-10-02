@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea'; 
 import ReactMarkdown from 'react-markdown'; 
-import type { PantryItem } from '../App';
+import { describeItem, formatQuantity, type PantryItem } from '../lib/types';
 
 
 type RecipeGeneratorProps = {
@@ -43,9 +43,7 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
     setIsLoading(true);
 
     // 1. COLLECT INGREDIENT LIST FROM PROPS
-    const ingredientsList = pantryItems
-    .map(item => `${item.quantity} of ${item.name}`)
-    .join(', ');
+    const ingredientsList = pantryItems.map(describeItem).join(', ');
 
     // 2. CONSTRUCT THE DYNAMIC PROMPT USING STATE VARIABLES
     const prompt = `
@@ -129,7 +127,7 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
               <Card key={item.id}>
                 <CardContent className="p-4">
                   <p className="text-gray-900">{item.name}</p>
-                  <p className="text-gray-500 text-sm">{item.quantity}</p>
+                  <p className="text-gray-500 text-sm">{formatQuantity(item)}</p>
                 </CardContent>
               </Card>
             ))

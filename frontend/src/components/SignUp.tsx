@@ -5,17 +5,15 @@ import { Label } from './ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { ChefHat } from 'lucide-react';
 
-import { auth, db } from '../firebase'; 
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'; 
-import { doc, setDoc } from 'firebase/firestore'; 
+import { toast } from 'sonner';
+import { supabase } from '../lib/supabase';
 
 type SignUpProps = {
-  onSignUp: () => void;         
   onBackToLanding: () => void;
   onSwitchToLogin: () => void;  
 };
 
-export function SignUp({ onSignUp, onBackToLanding, onSwitchToLogin }: SignUpProps) {
+export function SignUp({ onBackToLanding, onSwitchToLogin }: SignUpProps) {
   // State for form inputs
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,41 +21,27 @@ export function SignUp({ onSignUp, onBackToLanding, onSwitchToLogin }: SignUpPro
   const [loading, setLoading] = useState(false);
 
   /**
-   * Handles the form submission for user sign-up, performing three steps:
-   * 1. Create user in Firebase Authentication.
-   * 2. Update the Auth profile with the display name.
-   * 3. Create a corresponding user document in Firestore.
+   * Creates the account with Supabase. The display name is stored as user
+   * metadata, and a database trigger copies it into the user's profile row.
+   * On success the auth listener in App navigates to Home.
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      // Step 1: Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Step 2: Update Firebase Auth profile with the display name
-      await updateProfile(user, {
-        displayName: name,
-      });
-
-      // Step 3: Store base user data in Firestore under the 'users' collection
-      await setDoc(doc(db, "users", user.uid), {
-        name,
-        email,
-        createdAt: new Date(),
-        // Note: Additional data like profile settings, etc., would be added here or in a separate step
-      });
-
-      alert("Account created! Welcome 🎉");
-      onSignUp(); // Navigate user to the main application screen
-    } catch (err: any) {
-      // Display error message from Firebase
-      alert(err.message);
-    } finally {
-      // Ensure loading is set to false regardless of success or failure
-      setLoading(false);
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { display_name: name } },
+    });
+    setLoading(false);
+    if (error) {
+      toast.error(error.message);
+    } else if (!data.session) {
+      // Email confirmation is enabled on this project.
+      toast.success('Check your email to confirm your account, then log in.');
+      onSwitchToLogin();
+    } else {
+      toast.success('Account created! Welcome 🎉');
     }
   };
 
@@ -119,6 +103,7 @@ export function SignUp({ onSignUp, onBackToLanding, onSwitchToLogin }: SignUpPro
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
+                  minLength={6}
                   className="mt-2"
                 />
               </div>
