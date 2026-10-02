@@ -44,11 +44,18 @@ export type UserProfile = {
   diet?: string;
 };
 
+export type PlanSlot = 'breakfast' | 'lunch' | 'dinner' | 'snack';
+export type PlannedMeal = { id: string; name: string; minutes: number } | null;
+export type PlanDay = { day: string } & Record<PlanSlot, PlannedMeal>;
+
+/** A generated, saved meal plan. `source` says whether the AI built it or the rule-based fallback did. */
 export type MealPlan = {
-  id: string;
-  day: string;
-  recipe: Recipe;
+  planId: string;
+  source: 'model' | 'model-retry' | 'fallback' | 'saved';
+  days: PlanDay[];
 };
+
+export type PlanSuggestion = { field: 'cost' | 'time' | 'skill' | 'diet'; label: string };
 
 /** "2 cups", "3", or "" for an item without a quantity. */
 export function formatQuantity(item: { quantity: number | null; unit: string | null }): string {

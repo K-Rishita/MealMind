@@ -22,3 +22,20 @@ export function geminiModel(apiKey: string, model = DEFAULT_MODEL): JsonModel {
     },
   };
 }
+
+/** Free-text generation (the Recipe Generator's markdown recipe). */
+export interface TextModel {
+  readonly name: string;
+  generateText(prompt: string): Promise<string>;
+}
+
+export function geminiTextModel(apiKey: string, model = DEFAULT_MODEL): TextModel {
+  const ai = new GoogleGenAI({ apiKey });
+  return {
+    name: model,
+    async generateText(prompt) {
+      const res = await ai.models.generateContent({ model, contents: prompt });
+      return res.text ?? '';
+    },
+  };
+}

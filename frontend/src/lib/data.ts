@@ -4,7 +4,7 @@
  * table to the signed-in user, so no query needs to filter by user id.
  */
 import { supabase } from './supabase';
-import type { Cost, Ingredient, NewItem, PantryItem, Recipe, ShoppingListItem, SkillLevel, UserProfile } from './types';
+import type { Cost, Ingredient, MealPlan, NewItem, PantryItem, PlanDay, PlanSlot, Recipe, ShoppingListItem, SkillLevel, UserProfile } from './types';
 
 type RecipeRow = {
   id: string;
@@ -50,22 +50,29 @@ export async function fetchRecipes(): Promise<Recipe[]> {
   return (rows as RecipeRow[]).map(toRecipe);
 }
 
-const TIME_RANGES: Record<string, [number, number]> = {
-  quick: [0, 30],
-  medium: [31, 60],
-  long: [61, 100000],
-};
+const DAY_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-/** Names of recipes matching the meal-plan filters ('all' = no constraint). */
-export async function fetchRecipeNames(filters: { cost: string; time: string; skill: string }): Promise<string[]> {
-  let q = supabase.from('recipes').select('name');
-  if (filters.cost !== 'all') q = q.eq('cost', filters.cost);
-  if (filters.skill !== 'all') q = q.eq('skill', filters.skill);
-  if (filters.time in TIME_RANGES) {
-    const [min, max] = TIME_RANGES[filters.time];
-    q = q.gte('minutes', min).lte('minutes', max);
+/** The user's most recent saved meal plan, or null. */
+export async function fetchLatestPlan(): Promise<MealPlan | null> {
+  const latest = check(
+    await supabase.from('meal_plans').select('id').order('created_at', { ascending: false }).limit(1).maybeSingle(),
+  ) as { id: string } | null;
+  if (!latest) return null;
+  const rows = check(
+    await supabase.from('meal_plan_entries').select('day, slot, recipes(id, name, minutes)').eq('plan_id', latest.id),
+  ) as unknown as { day: string; slot: PlanSlot; recipes: { id: string; name: string; minutes: number } }[];
+
+  const days = new Map<string, PlanDay>();
+  for (const row of rows) {
+    const day = days.get(row.day) ?? { day: row.day, breakfast: null, lunch: null, dinner: null, snack: null };
+    day[row.slot] = row.recipes;
+    days.set(row.day, day);
   }
-  return (check(await q) as { name: string }[]).map((r) => r.name);
+  return {
+    planId: latest.id,
+    source: 'saved',
+    days: [...days.values()].sort((a, b) => DAY_ORDER.indexOf(a.day) - DAY_ORDER.indexOf(b.day)),
+  };
 }
 
 // ---------------------------------------------------------------------------

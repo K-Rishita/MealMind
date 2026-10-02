@@ -57,6 +57,7 @@ export function summarize(system: string, subset: 'core' | 'all' = 'core', runs 
   let plannableRuns = 0, plannableGood = 0;
   let unplannableRuns = 0, unplannableHandled = 0, plansReturned = 0;
   const uniqueMainRatios: number[] = [];
+  const mainMinutes: number[] = [];
   let injectionRuns = 0, injectionPlansAllGood = 0;
   let repeatsOver2 = 0;
   let mainFitMeal = 0, pantryItemsTotal = 0, pantryItemsUsedTotal = 0, modelCalls = 0;
@@ -105,6 +106,7 @@ export function summarize(system: string, subset: 'core' | 'all' = 'core', runs 
       if (!e.recipeId) continue;
       mainInDb++;
       if (recipeById.get(e.recipeId)!.mealTypes.some((t) => SLOT_MEAL_TYPES[e.slot].includes(t))) mainFitMeal++;
+      mainMinutes.push(recipeById.get(e.recipeId)!.minutes);
       if (e.violations.length === 0) mainCompliant++;
       for (const v of e.violations) violationCounts[v]++;
     }
@@ -144,6 +146,7 @@ export function summarize(system: string, subset: 'core' | 'all' = 'core', runs 
       mainMealsSuitForSlot: pct(mainFitMeal, mainEntries),
       pantryItemsUsedInPlan: pct(pantryItemsUsedTotal, pantryItemsTotal),
       distinctMainRecipesPerPlan: uniqueMainRatios.length ? pct(uniqueMainRatios.reduce((a, b) => a + b, 0), uniqueMainRatios.length) : null,
+      medianMainMealMinutes: percentile(mainMinutes, 50),
       latencyP50Ms: percentile(latencies, 50),
       latencyP95Ms: percentile(latencies, 95),
     },

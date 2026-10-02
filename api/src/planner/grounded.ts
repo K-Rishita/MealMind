@@ -33,6 +33,9 @@ export type PlanResult =
       source: 'model' | 'model-retry' | 'fallback';
       attempts: { errors: string[] }[];
       candidateCounts: Record<Slot, number>;
+      /** Main meals with so few options that the week will repeat a lot, and how to widen them. */
+      limitedSlots: Slot[];
+      suggestions: Suggestion[];
     }
   | {
       status: 'insufficient';
@@ -54,7 +57,8 @@ export function findCandidates(recipes: Recipe[], req: PlanRequest): Candidates 
   const pantryNames = req.pantry.map((p) => p.name);
   const allowed = matchingRecipes(recipes, req)
     .map((r) => ({ r, pantryUse: pantryItemsUsed(r.ingredientNames, pantryNames).length }))
-    .sort((a, b) => b.pantryUse - a.pantryUse || a.r.name.localeCompare(b.r.name))
+    // Pantry use first, then quicker recipes (weeknight-friendly), then name for a stable order.
+    .sort((a, b) => b.pantryUse - a.pantryUse || a.r.minutes - b.r.minutes || a.r.name.localeCompare(b.r.name))
     .map((x) => x.r);
   return Object.fromEntries(
     SLOTS.map((slot) => [slot, allowed.filter((r) => r.mealTypes.some((t) => SLOT_MEAL_TYPES[slot].includes(t)))]),
@@ -63,13 +67,17 @@ export function findCandidates(recipes: Recipe[], req: PlanRequest): Candidates 
 
 const missingMainSlots = (c: Candidates) => MAIN_SLOTS.filter((s) => c[s].length === 0);
 
-/** Single-filter relaxations that would make the request possible. */
-function suggestions(recipes: Recipe[], req: PlanRequest): Suggestion[] {
+/** Fewer options than this for a main meal means a very repetitive week. */
+export const MIN_VARIETY = 3;
+const limitedMainSlots = (c: Candidates) => MAIN_SLOTS.filter((s) => c[s].length > 0 && c[s].length < MIN_VARIETY);
+
+/** Single-filter relaxations after which `fixed(candidates)` holds. */
+function suggestions(recipes: Recipe[], req: PlanRequest, fixed: (c: Candidates) => boolean): Suggestion[] {
   const out: Suggestion[] = [];
   for (const field of Object.keys(RELAX) as Suggestion['field'][]) {
     const relaxed = { ...req, [field]: RELAX[field].value } as PlanRequest;
     if (req[field] === relaxed[field]) continue;
-    if (missingMainSlots(findCandidates(recipes, relaxed)).length === 0) out.push({ field, label: RELAX[field].label });
+    if (fixed(findCandidates(recipes, relaxed))) out.push({ field, label: RELAX[field].label });
   }
   return out;
 }
@@ -263,8 +271,18 @@ export async function generatePlan(recipes: Recipe[], req: PlanRequest, model: J
   const c = findCandidates(recipes, req);
   const missing = missingMainSlots(c);
   if (missing.length) {
-    return { status: 'insufficient', missingSlots: missing, suggestions: suggestions(recipes, req), candidateCounts: counts(c) };
+    return {
+      status: 'insufficient',
+      missingSlots: missing,
+      suggestions: suggestions(recipes, req, (r) => missingMainSlots(r).length === 0),
+      candidateCounts: counts(c),
+    };
   }
+  const limitedSlots = limitedMainSlots(c);
+  const variety = {
+    limitedSlots,
+    suggestions: limitedSlots.length ? suggestions(recipes, req, (r) => limitedSlots.every((s) => r[s].length >= MIN_VARIETY)) : [],
+  };
 
   const schema = planSchema(c);
   const basePrompt = buildPrompt(req, c);
@@ -285,9 +303,9 @@ export async function generatePlan(recipes: Recipe[], req: PlanRequest, model: J
     }
     attempts.push({ errors });
     if (days && errors.length === 0) {
-      return { status: 'ok', days, source: attempt === 0 ? 'model' : 'model-retry', attempts, candidateCounts: counts(c) };
+      return { status: 'ok', days, source: attempt === 0 ? 'model' : 'model-retry', attempts, candidateCounts: counts(c), ...variety };
     }
   }
 
-  return { status: 'ok', days: fallbackPlan(c), source: 'fallback', attempts, candidateCounts: counts(c) };
+  return { status: 'ok', days: fallbackPlan(c), source: 'fallback', attempts, candidateCounts: counts(c), ...variety };
 }

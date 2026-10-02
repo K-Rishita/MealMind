@@ -6,7 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea'; 
 import ReactMarkdown from 'react-markdown'; 
-import { describeItem, formatQuantity, type PantryItem } from '../lib/types';
+import { toast } from 'sonner';
+import { postApi } from '../lib/api';
+import { formatQuantity, type PantryItem } from '../lib/types';
 
 
 type RecipeGeneratorProps = {
@@ -41,63 +43,22 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
   const handleGenerateRecipes = async () => {
     setShowFilterDialog(false);
     setIsLoading(true);
-
-    // 1. COLLECT INGREDIENT LIST FROM PROPS
-    const ingredientsList = pantryItems.map(describeItem).join(', ');
-
-    // 2. CONSTRUCT THE DYNAMIC PROMPT USING STATE VARIABLES
-    const prompt = `
-      You are an expert chef and recipe generator. Create one detailed recipe based on the following:
-
-      Available Ingredients: ${ingredientsList || 'None listed. Suggest a recipe with common items.'}
-      Cost Preference: ${costFilter}
-      Time Preference: ${timeFilter}
-      Skill Level: ${skillFilter}
-      
-      Additional Notes/Dietary Restrictions: ${userNotes || 'N/A'}
-
-      The recipe must include:
-      1. A creative recipe title.
-      2. A short description.
-      3. A clear list of ingredients (with required amounts).
-      4. Step-by-step instructions. (These MUST be in paragraph format, comma-separated. Do not use bullet points.)
-      
-      Please present the output in **Markdown format** for easy reading.
-      Ensure that the output is extremely short. Keep it under 20 lines of text.
-    `;
-
     try {
-      const backendUrl = 'http://localhost:5000/api/generate-recipe'; // Target the Python/Flask backend
-
-      const response = await fetch(backendUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: prompt}), // Send the dynamic prompt to the backend
+      // The server builds the prompt from your stored pantry and diet; we only send filters and notes.
+      const data = await postApi<{ recipe: string }>('/api/generate-recipe', {
+        cost: costFilter,
+        time: timeFilter,
+        skill: skillFilter,
+        notes: userNotes.trim(),
       });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Assuming the backend returns the generated text under the key 'recipe'
       setGeneratedRecipe(data.recipe);
-
+      setShowRecipeDialog(true);
+      setUserNotes('');
     } catch (error) {
-      console.error('Error fetching recipe from backend:', error);
-      setGeneratedRecipe("Failed to load recipe. Check if the Python backend server is running.");
+      toast.error(error instanceof Error ? error.message : String(error));
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
-    setShowRecipeDialog(true);
-    // Reset filters and notes after generation
-    setCostFilter('all');
-    setTimeFilter('all');
-    setSkillFilter('all');
-    setUserNotes('');
   };
 
   return (
@@ -165,6 +126,7 @@ export function RecipeGenerator({ pantryItems }: RecipeGeneratorProps) {
                 value={userNotes}
                 onChange={(e) => setUserNotes(e.target.value)}
                 placeholder="e.g., Must be gluten-free, or needs to be a spicy dish."
+                maxLength={500}
                 className="mt-2"
               />
             </div>

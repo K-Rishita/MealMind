@@ -6,7 +6,7 @@ import { ChefHat, User as UserIcon, LogOut } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import * as data from './lib/data';
 import { planCook } from './lib/cook';
-import type { MealPlan, NewItem, PantryItem, Recipe, ShoppingListItem, UserProfile } from './lib/types';
+import type { NewItem, PantryItem, Recipe, ShoppingListItem, UserProfile } from './lib/types';
 
 import { LandingPage } from './components/LandingPage';
 import { Login } from './components/Login';
@@ -38,7 +38,6 @@ export default function App() {
   const [userProfile, setUserProfile] = useState<UserProfile>({});
   const [pantryItems, setPantryItems] = useState<PantryItem[]>([]);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [mealPlan] = useState<MealPlan[]>([]);
   const [shoppingListItems, setShoppingListItems] = useState<ShoppingListItem[]>([]);
 
   // ---------------------------------------------------------
@@ -265,11 +264,13 @@ export default function App() {
         {currentPage === 'home' && (
           <Home
             pantryItems={pantryItems}
+            recipes={recipes}
+            userDiet={userProfile.diet}
             isStructuredMode={isStructuredMode}
-            mealPlan={mealPlan}
             onNavigateToPantry={() => setCurrentPage('pantry')}
+            onNavigateToProfile={() => setCurrentPage('profile')}
             onWhatCanIMake={() => setCurrentPage('generator')}
-            fetchRecipeNames={data.fetchRecipeNames}
+            onMakeRecipe={handleMakeRecipe}
           />
         )}
         {currentPage === 'discovery' && <RecipeDiscovery recipes={recipes} onMakeRecipe={handleMakeRecipe} />}
