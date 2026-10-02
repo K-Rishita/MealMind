@@ -215,10 +215,12 @@ export function planSchema(c: Candidates): object {
           type: 'object',
           properties: { day: { type: 'string', enum: [...DAYS] }, ...slotProps },
           required: ['day', ...Object.keys(slotProps)],
+          additionalProperties: false,
         },
       },
     },
     required: ['days'],
+    additionalProperties: false, // required by OpenAI-style strict structured output
   };
 }
 

@@ -11,7 +11,7 @@ import { loadRecipes } from '../src/planner/recipes.js';
 import { makeResolver, MAIN_SLOTS, scorePlan, type PlanDay, type PlanScore } from '../src/planner/score.js';
 import { selectCases, type EvalCase } from './cases.js';
 import { MEAL_TYPES_PATH, RECIPES_PATH, REPORTS_DIR, RESULTS_DIR } from './paths.js';
-import type { RunRecord } from './run.js';
+import { DEFAULT_EVAL_MODEL, modelSlug, resultsDir, type RunRecord } from './run.js';
 import { parseBaselineOutput } from './systems/baseline.js';
 
 /** Output of any system, parsed. `insufficient` = the system said the request can't be met. */
@@ -38,13 +38,13 @@ const percentile = (xs: number[], p: number) => {
   return s[Math.min(s.length - 1, Math.ceil((p / 100) * s.length) - 1)];
 };
 
-export function summarize(system: string, subset: 'core' | 'all' = 'core', runs = 1) {
+export function summarize(system: string, subset: 'core' | 'all' = 'core', runs = 1, modelSpec = DEFAULT_EVAL_MODEL) {
   const recipes = loadRecipes(RECIPES_PATH, MEAL_TYPES_PATH);
   const recipeById = new Map(recipes.map((r) => [r.id, r]));
   const resolve = makeResolver(recipes);
   const cases = selectCases(JSON.parse(readFileSync(new URL('./cases.json', import.meta.url), 'utf8')) as EvalCase[], subset);
   const caseById = new Map(cases.map((c) => [c.id, c]));
-  const dir = join(RESULTS_DIR, system);
+  const dir = resultsDir(modelSpec, system);
   if (!existsSync(dir)) throw new Error(`No results for ${system}`);
 
   const records: RunRecord[] = readdirSync(dir)
@@ -164,11 +164,13 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   };
   const subset = (flag('subset') ?? 'core') as 'core' | 'all';
   const runs = Number(flag('runs') ?? 1);
+  const modelSpec = flag('model') ?? DEFAULT_EVAL_MODEL;
   const systems = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && !all[i - 1]?.startsWith('--'));
   if (!systems.length) throw new Error('Usage: npx tsx eval/report.ts <system> [<system> ...] [--subset core|all] [--runs 1]');
   mkdirSync(REPORTS_DIR, { recursive: true });
-  const reports = systems.map((s) => summarize(s, subset, runs));
-  for (const r of reports) writeFileSync(join(REPORTS_DIR, `${r.system}.json`), JSON.stringify(r, null, 2) + '\n');
+  const reports = systems.map((s) => summarize(s, subset, runs, modelSpec));
+  console.log(`model: ${modelSpec}, subset: ${subset}, runs per case: ${runs}`);
+  for (const r of reports) writeFileSync(join(REPORTS_DIR, `${modelSlug(modelSpec)}.${r.system}.json`), JSON.stringify(r, null, 2) + '\n');
 
   const keys = Object.keys(reports[0].metrics) as (keyof (typeof reports)[0]['metrics'])[];
   const w = Math.max(...keys.map((k) => k.length));
