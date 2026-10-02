@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "narrow-07",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:09.074Z",
+  "latencyMs": 1,
+  "text": "{\"status\":\"insufficient\",\"missingSlots\":[\"breakfast\",\"lunch\"],\"suggestions\":[{\"field\":\"cost\",\"label\":\"Allow any budget\"},{\"field\":\"time\",\"label\":\"Allow any cooking time\"}],\"candidateCounts\":{\"breakfast\":0,\"lunch\":0,\"dinner\":1,\"snack\":0}}",
+  "error": null,
+  "modelCalls": 0
+}

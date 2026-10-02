@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-03",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:11.874Z",
+  "latencyMs": 1966,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-friendly-breakfast-skillet\",\"lunch\":\"paleo-salmon-burgers\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"},{\"day\":\"Tuesday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"paleo-friendly-chicken-fajita-bowl\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-avocado-egg-boats\",\"lunch\":\"keto-chicken-and-broccoli-stir-fry\",\"dinner\":\"keto-friendly-coconut-chicken-curry\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Thursday\",\"breakfast\":\"keto-friendly-breakfast-skillet\",\"lunch\":\"simple-pesto-chicken-keto-gluten-free\",\"dinner\":\"keto-friendly-low-carb-chili\",\"snack\":\"keto-friendly-egg-salad\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-keto-pancakes-cream-cheese-base\",\"lunch\":\"shrimp-scampi-with-zucchini-noodles\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"paleo-zucchini-fritters\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":4,\"lunch\":15,\"dinner\":18,\"snack\":6},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

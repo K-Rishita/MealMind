@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "broad-10",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:06.499Z",
+  "latencyMs": 1744,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"overnight-oats-5-minute-prep\",\"lunch\":\"easy-lemon-ricotta-pasta-vegetarian\",\"dinner\":\"simple-low-cost-pasta-aglio-e-olio\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"simple-low-cost-grilled-cheese-sandwich\",\"dinner\":\"quick-low-cost-minestrone-soup-italian\",\"snack\":\"classic-hummus-middle-eastern-dip\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"simple-low-cost-buttered-noodles\",\"dinner\":\"thai-green-curry-with-tofu\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Thursday\",\"breakfast\":\"dairy-free-low-cost-oatmeal-vegan\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"creamy-vegan-tomato-soup\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Friday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"simple-low-cost-black-beans-and-rice\",\"dinner\":\"vegan-mushroom-stroganoff-comfort-food\",\"snack\":\"vegan-chocolate-avocado-mousse\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":13,\"lunch\":28,\"dinner\":20,\"snack\":27},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

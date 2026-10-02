@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-01",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:10.102Z",
+  "latencyMs": 1770,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"french-ratatouille-vegan-gluten-free\",\"dinner\":\"paleo-beef-and-vegetable-skewers\",\"snack\":\"pescatarian-shrimp-ceviche-peruvian-mexican\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"paleo-friendly-chicken-chili\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"simple-homemade-guacamole-mexican\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"pescatarian-shrimp-ceviche-peruvian-mexican\",\"dinner\":\"paleo-grilled-pork-chops-with-herbs\",\"snack\":\"keto-friendly-bacon-wrapped-asparagus\"},{\"day\":\"Thursday\",\"breakfast\":\"paleo-sweet-potato-toast-with-avocado\",\"lunch\":\"paleo-friendly-chicken-fajita-bowl\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"paleo-zucchini-fritters\"},{\"day\":\"Friday\",\"breakfast\":\"paleo-chicken-and-sweet-potato-hash\",\"lunch\":\"gluten-free-chicken-and-vegetable-curry\",\"dinner\":\"sheet-pan-lemon-herb-salmon-and-asparagus\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":4,\"lunch\":13,\"dinner\":14,\"snack\":7},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}

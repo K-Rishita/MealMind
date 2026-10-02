@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "narrow-08",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:09.075Z",
+  "latencyMs": 3695,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"classic-french-souffle-au-fromage-advanced\",\"dinner\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"snack\":\"advanced-chocolate-lava-cakes-moulleux-au-chocolat\"},{\"day\":\"Tuesday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"dinner\":\"classic-french-souffle-au-fromage-advanced\",\"snack\":\"classic-tiramisu-italian-dessert\"},{\"day\":\"Wednesday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"classic-french-souffle-au-fromage-advanced\",\"dinner\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"snack\":\"classic-french-crepes-suzette-advanced\"},{\"day\":\"Thursday\",\"breakfast\":\"advanced-croissants-french-pastry\",\"lunch\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"dinner\":\"classic-french-souffle-au-fromage-advanced\",\"snack\":\"indian-samosa-vegetarian-appetizer\"},{\"day\":\"Friday\",\"breakfast\":\"keto-friendly-keto-bread-almond-flour\",\"lunch\":\"classic-french-souffle-au-fromage-advanced\",\"dinner\":\"homemade-gnocchi-with-sage-butter-sauce-italian\",\"snack\":\"advanced-french-mille-feuille-napoleon\"}],\"source\":\"model-retry\",\"attempts\":[{\"errors\":[\"Wednesday has the same recipe for lunch and dinner.\"]},{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":2,\"lunch\":2,\"dinner\":2,\"snack\":8},\"limitedSlots\":[\"breakfast\",\"lunch\",\"dinner\"],\"suggestions\":[{\"field\":\"skill\",\"label\":\"Allow any skill level\"}]}",
+  "error": null,
+  "modelCalls": 2
+}

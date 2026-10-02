@@ -1,0 +1,11 @@
+{
+  "system": "grounded",
+  "caseId": "diet-02",
+  "run": 1,
+  "model": "openrouter:google/gemini-2.5-flash",
+  "startedAt": "2026-10-02T23:28:10.336Z",
+  "latencyMs": 1692,
+  "text": "{\"status\":\"ok\",\"days\":[{\"day\":\"Monday\",\"breakfast\":\"high-protein-tofu-scramble-vegan\",\"lunch\":\"keto-friendly-coconut-chicken-curry\",\"dinner\":\"paleo-cauliflower-fried-rice\",\"snack\":\"simple-green-smoothie-vegan-gluten-free\"},{\"day\":\"Tuesday\",\"breakfast\":\"simple-green-smoothie-vegan-gluten-free\",\"lunch\":\"vegan-red-thai-curry-vegetable\",\"dinner\":\"paleo-salmon-burgers\",\"snack\":\"vegan-overnight-chia-seed-pudding\"},{\"day\":\"Wednesday\",\"breakfast\":\"vegan-overnight-chia-seed-pudding\",\"lunch\":\"gluten-free-chicken-and-vegetable-curry\",\"dinner\":\"pescatarian-garlic-butter-steamed-mussels\",\"snack\":\"dairy-free-chocolate-ice-cream-vegan\"},{\"day\":\"Thursday\",\"breakfast\":\"simple-low-cost-scrambled-eggs\",\"lunch\":\"keto-friendly-egg-salad\",\"dinner\":\"shrimp-scampi-with-zucchini-noodles\",\"snack\":\"thai-mango-sticky-rice-khao-niao-mamuang\"},{\"day\":\"Friday\",\"breakfast\":\"gluten-free-banana-pancakes\",\"lunch\":\"mediterranean-quinoa-salad\",\"dinner\":\"spicy-thai-beef-salad-yum-nua\",\"snack\":\"keto-fat-bombs-raspberry-cheesecake\"}],\"source\":\"model\",\"attempts\":[{\"errors\":[]}],\"candidateCounts\":{\"breakfast\":11,\"lunch\":38,\"dinner\":40,\"snack\":20},\"limitedSlots\":[],\"suggestions\":[]}",
+  "error": null,
+  "modelCalls": 1
+}
