@@ -5,7 +5,7 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { normalizeRecipe, type RawRecipe } from '../src/planner/recipes.js';
+import { normalizeRecipe, type RawRecipe, type Recipe } from '../src/planner/recipes.js';
 
 const root = (p: string) => fileURLToPath(new URL(`../../${p}`, import.meta.url));
 
@@ -13,9 +13,9 @@ const raw: RawRecipe[] = JSON.parse(readFileSync(root('Recipes.json'), 'utf8'));
 const mealTypes: Record<string, string[]> = JSON.parse(readFileSync(root('supabase/data/meal_types.json'), 'utf8'));
 
 const rows = raw.map((r) => {
-  const recipe = normalizeRecipe(r);
   const types = mealTypes[r.recipeName];
   if (!types) throw new Error(`No meal types for "${r.recipeName}"`);
+  const recipe = normalizeRecipe(r, types as Recipe['mealTypes']);
   return {
     id: recipe.id,
     name: recipe.name,

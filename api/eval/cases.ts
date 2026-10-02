@@ -104,6 +104,19 @@ export function generateCases(): EvalCase[] {
   return cases;
 }
 
+/**
+ * The 40-case core subset used for the reported numbers (1 run per case), chosen
+ * as the first cases of each category so it is fixed and reproducible.
+ */
+export const CORE_SPLIT: Record<EvalCase['category'], number> = { broad: 14, narrow: 10, infeasible: 6, diet: 6, injection: 4 };
+
+export function selectCases(cases: EvalCase[], subset: 'all' | 'core'): EvalCase[] {
+  if (subset === 'all') return cases;
+  return (Object.keys(CORE_SPLIT) as EvalCase['category'][]).flatMap((cat) =>
+    cases.filter((c) => c.category === cat).slice(0, CORE_SPLIT[cat]),
+  );
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const cases = generateCases();
   writeFileSync(new URL('./cases.json', import.meta.url), JSON.stringify(cases, null, 2) + '\n');

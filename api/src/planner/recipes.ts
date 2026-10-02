@@ -5,6 +5,7 @@ export const DIETS = ['vegetarian', 'vegan', 'pescatarian', 'keto', 'paleo', 'gl
 export type Diet = (typeof DIETS)[number];
 export type Cost = 'low' | 'medium' | 'high';
 export type Skill = 'beginner' | 'intermediate' | 'advanced';
+export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert' | 'side';
 
 export type Recipe = {
   id: string;
@@ -13,7 +14,9 @@ export type Recipe = {
   skill: Skill;
   minutes: number;
   diets: Diet[];
+  mealTypes: MealType[]; // empty = a component (sauce, dough, broth), never planned on its own
   ingredients: string[];
+  ingredientNames: string[];
   steps: string[];
 };
 
@@ -67,7 +70,7 @@ export function slugify(name: string): string {
     .replace(/^-|-$/g, '');
 }
 
-export function normalizeRecipe(raw: RawRecipe): Recipe {
+export function normalizeRecipe(raw: RawRecipe, mealTypes: MealType[] = []): Recipe {
   const minutes = parseCookTimeMinutes(raw.timeTakenToCook);
   if (minutes === null) throw new Error(`Unparseable cook time for "${raw.recipeName}": ${raw.timeTakenToCook}`);
 
@@ -78,12 +81,16 @@ export function normalizeRecipe(raw: RawRecipe): Recipe {
     skill: raw.skillLevel.toLowerCase() as Skill,
     minutes,
     diets: normalizeDiets(raw.dietaryRestrictions),
+    mealTypes,
+    ingredientNames: raw.ingredients.map((i) => i.name),
     ingredients: raw.ingredients.map((i) => [i.quantity, i.unit, i.name].filter((p) => p !== '' && p != null).join(' ')),
     steps: raw.steps,
   };
 }
 
-export function loadRecipes(path: string): Recipe[] {
+/** Loads Recipes.json, optionally merging hand-reviewed meal types (supabase/data/meal_types.json). */
+export function loadRecipes(path: string, mealTypesPath?: string): Recipe[] {
   const raw = JSON.parse(readFileSync(path, 'utf8')) as RawRecipe[];
-  return raw.map(normalizeRecipe);
+  const mealTypes: Record<string, MealType[]> = mealTypesPath ? JSON.parse(readFileSync(mealTypesPath, 'utf8')) : {};
+  return raw.map((r) => normalizeRecipe(r, mealTypes[r.recipeName] ?? []));
 }

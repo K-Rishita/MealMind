@@ -1,6 +1,6 @@
 /**
  * Runs a planner system over the eval set and stores every raw response.
- * Usage: npx tsx eval/run.ts <system> [--runs 3] [--concurrency 2] [--limit N]
+ * Usage: npx tsx eval/run.ts <system> [--subset core|all] [--runs 1] [--concurrency 2] [--limit N]
  *
  * Results go to eval/results/<system>/<caseId>.r<run>.json. Existing files are
  * skipped, so an interrupted run resumes where it stopped. Scoring is separate
@@ -9,10 +9,16 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { GoogleGenAI } from '@google/genai';
+import { fallbackPlan, findCandidates, generatePlan } from '../src/planner/grounded.js';
+import { geminiModel, type JsonModel } from '../src/planner/llm.js';
 import { loadRecipes } from '../src/planner/recipes.js';
-import type { EvalCase } from './cases.js';
-import { RECIPES_PATH, RESULTS_DIR } from './paths.js';
+import { selectCases, type EvalCase } from './cases.js';
+import { MEAL_TYPES_PATH, RECIPES_PATH, RESULTS_DIR } from './paths.js';
 import { buildBaselinePrompt, type BaselineName } from './systems/baseline.js';
+
+// rules-only: the grounded pipeline with no model at all (always the deterministic plan). Makes no API calls.
+export const SYSTEMS = ['baseline-app', 'baseline-fixed', 'grounded', 'rules-only'] as const;
+export type SystemName = (typeof SYSTEMS)[number];
 
 export const MODEL = 'gemini-2.5-flash'; // same model the app uses, kept fixed for before/after
 
@@ -26,11 +32,23 @@ export type RunRecord = {
   text: string | null;
   error: string | null;
   usage?: unknown;
+  modelCalls?: number; // grounded only: 0 for impossible requests, 2 when it retried
 };
 
 function arg(name: string, fallback: number): number {
   const i = process.argv.indexOf(`--${name}`);
   return i > 0 ? Number(process.argv[i + 1]) : fallback;
+}
+
+function strArg(name: string, fallback: string): string {
+  const i = process.argv.indexOf(`--${name}`);
+  return i > 0 ? process.argv[i + 1] : fallback;
+}
+
+/** Counts calls so an eval run reports how many requests the grounded planner made. */
+function countingModel(inner: JsonModel) {
+  const wrapper = { calls: 0, name: inner.name, generateJson: (p: string, s: object) => (wrapper.calls++, inner.generateJson(p, s)) };
+  return wrapper;
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -42,20 +60,22 @@ function retryDelaySeconds(err: unknown): number | null {
 }
 
 async function main() {
-  const system = process.argv[2] as BaselineName;
-  if (system !== 'baseline-app' && system !== 'baseline-fixed') {
-    throw new Error('Usage: npx tsx eval/run.ts <baseline-app|baseline-fixed> [--runs 3] [--concurrency 2] [--limit N]');
+  const system = process.argv[2] as SystemName;
+  if (!SYSTEMS.includes(system)) {
+    throw new Error(`Usage: npx tsx eval/run.ts <${SYSTEMS.join('|')}> [--subset core|all] [--runs 1] [--concurrency 2] [--limit N]`);
   }
-  process.loadEnvFile(new URL('../.env', import.meta.url));
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new Error('GEMINI_API_KEY missing from api/.env');
+  if (system !== 'rules-only') process.loadEnvFile(new URL('../.env', import.meta.url));
+  const apiKey: string = process.env.GEMINI_API_KEY ?? '';
+  if (!apiKey && system !== 'rules-only') throw new Error('GEMINI_API_KEY missing from api/.env');
 
-  const runs = arg('runs', 3);
+  const runs = arg('runs', 1);
+  const subset = strArg('subset', 'core') as 'core' | 'all';
   const concurrency = arg('concurrency', 2);
   const limit = arg('limit', Infinity);
-  const ai = new GoogleGenAI({ apiKey });
-  const recipes = loadRecipes(RECIPES_PATH);
-  const cases: EvalCase[] = JSON.parse(readFileSync(new URL('./cases.json', import.meta.url), 'utf8')).slice(0, limit);
+  const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
+  const recipes = loadRecipes(RECIPES_PATH, MEAL_TYPES_PATH);
+  const allCases: EvalCase[] = JSON.parse(readFileSync(new URL('./cases.json', import.meta.url), 'utf8'));
+  const cases = selectCases(allCases, subset).slice(0, limit);
 
   const outDir = join(RESULTS_DIR, system);
   mkdirSync(outDir, { recursive: true });
@@ -69,16 +89,31 @@ async function main() {
   async function worker() {
     while (jobs.length) {
       const { c, run } = jobs.shift()!;
-      const prompt = buildBaselinePrompt(system, recipes, c.request);
       const record: RunRecord = { system, caseId: c.id, run, model: MODEL, startedAt: new Date().toISOString(), latencyMs: 0, text: null, error: null };
 
       for (let attempt = 1; ; attempt++) {
         const t0 = performance.now();
         try {
-          const res = await ai.models.generateContent({ model: MODEL, contents: prompt });
+          if (system === 'rules-only') {
+            const noModel = { name: 'none', generateJson: async () => { throw new Error('rules-only'); } };
+            const result = await generatePlan(recipes, c.request, { ...noModel });
+            const days = result.status === 'ok' ? fallbackPlan(findCandidates(recipes, c.request)) : undefined;
+            record.text = JSON.stringify(result.status === 'ok' ? { ...result, days, attempts: [] } : result);
+            record.modelCalls = 0;
+          } else if (system === 'grounded') {
+            // The planner handles its own retry and fallback; model errors become a fallback plan.
+            const model = countingModel(geminiModel(apiKey, MODEL));
+            const result = await generatePlan(recipes, c.request, model);
+            const quota = result.status === 'ok' && result.attempts.find((a) => a.errors.some((e) => /429|RESOURCE_EXHAUSTED/.test(e)));
+            if (quota) throw new Error(quota.errors.join(' '));
+            record.text = JSON.stringify(result);
+            record.modelCalls = model.calls;
+          } else {
+            const res = await ai!.models.generateContent({ model: MODEL, contents: buildBaselinePrompt(system, recipes, c.request) });
+            record.text = res.text ?? '';
+            record.usage = res.usageMetadata;
+          }
           record.latencyMs = Math.round(performance.now() - t0);
-          record.text = res.text ?? '';
-          record.usage = res.usageMetadata;
           record.error = null;
           break;
         } catch (err) {
