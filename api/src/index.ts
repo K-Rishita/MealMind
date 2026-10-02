@@ -19,6 +19,7 @@ const app = createApp({
   services: SUPABASE_URL && SUPABASE_ANON_KEY ? supabaseServices(SUPABASE_URL, SUPABASE_ANON_KEY) : undefined,
   planModel: useModel ? geminiModel(GEMINI_API_KEY!) : undefined,
   textModel: useModel ? geminiTextModel(GEMINI_API_KEY!) : undefined,
+  aiRequestsPerHour: Number(process.env.AI_REQUESTS_PER_HOUR) || undefined, // default 30 per user
 });
 
 serve({ fetch: app.fetch, port }, () => {
