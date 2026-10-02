@@ -72,3 +72,19 @@ serviceAccountKey.json
 
 # dataconnect generated files
 .dataconnect
+
+# Build output and caches
+dist/
+build/
+.vite/
+__pycache__/
+*.pyc
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
