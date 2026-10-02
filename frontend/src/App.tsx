@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, auth } from './firebase';
+import { parseCookTimeMinutes } from './lib/time';
 import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { collection, query, where, getDocs, QuerySnapshot, updateDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -158,7 +159,7 @@ export default function App() {
           }
 
           // Smart Defaults for missing metadata
-          const derivedTime = Number(data.time) || Math.floor(Math.random() * (90 - 15 + 1)) + 15;
+          const derivedTime = Number(data.time) || parseCookTimeMinutes(data.timeTakenToCook ?? '') || 0;
           const costs = ['low', 'medium', 'high'];
           const derivedCost = (data.cost || data.costOfIngredients || costs[Math.floor(Math.random() * costs.length)]).toLowerCase();
 
