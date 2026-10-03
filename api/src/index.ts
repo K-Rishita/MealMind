@@ -19,7 +19,11 @@ const specs = process.env.LLM_MODELS ? process.env.LLM_MODELS.split(',').map((s)
 const models = specs
   .map((spec) => modelFromSpec(spec, { google: GEMINI_API_KEY, openrouter: OPENROUTER_API_KEY }))
   .filter((m): m is Model => m !== null);
-const model = process.env.PLANNER_MODE !== 'rules' && models.length ? modelChain(models) : undefined;
+// MODEL_TIMEOUT_MS: give up on one model and try the next after this long (default 25 s).
+const model =
+  process.env.PLANNER_MODE !== 'rules' && models.length
+    ? modelChain(models, { timeoutMs: Number(process.env.MODEL_TIMEOUT_MS) || undefined })
+    : undefined;
 
 const app = createApp({
   staticDir: process.env.STATIC_DIR,

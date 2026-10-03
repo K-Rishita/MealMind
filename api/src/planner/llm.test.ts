@@ -65,6 +65,13 @@ describe('modelChain', () => {
     expect(chain.lastServedBy).toBe('free-a');
   });
 
+  it('moves on when a model is too slow', async () => {
+    const hang: Model = { name: 'slow-free', generateJson: () => new Promise(() => {}), generateText: () => new Promise(() => {}) };
+    const chain = modelChain([hang, fake('gemini', 'fast')], { timeoutMs: 20 });
+    expect(await chain.generateJson('p', {})).toBe('fast');
+    expect(chain.lastServedBy).toBe('gemini');
+  });
+
   it('reports every failure when all models fail', async () => {
     const chain = modelChain([fake('a', new Error('429 limit')), fake('b', new Error('down'))]);
     await expect(chain.generateJson('p', {})).rejects.toThrow(/a: 429 limit \| b: down/);

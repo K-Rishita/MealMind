@@ -50,8 +50,10 @@ describe('recipes', () => {
   });
 
   it('are not readable anonymously', async () => {
-    const { data } = await anon.from('recipes').select('id').limit(1);
-    expect(data).toEqual([]);
+    // Either an empty result (RLS) or a privilege error (no grant) is fine; no rows may leak.
+    const { data, error } = await anon.from('recipes').select('id').limit(1);
+    expect(error !== null || (data ?? []).length === 0).toBe(true);
+    expect(data ?? []).toEqual([]);
   });
 
   it('cannot be modified by users', async () => {

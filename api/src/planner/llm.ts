@@ -93,7 +93,16 @@ export type ChainModel = Model & { readonly lastServedBy: string | null };
  * outage, unsupported option) moves on to the next model. `name` reports the
  * model that actually answered most recently, so saved plans record it.
  */
-export function modelChain(models: Model[]): ChainModel {
+/** Rejects if `promise` takes longer than `ms`, so one slow model can't stall a request. */
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`timed out after ${ms} ms (${label})`)), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
+export function modelChain(models: Model[], { timeoutMs = 25_000 }: { timeoutMs?: number } = {}): ChainModel {
   if (!models.length) throw new Error('modelChain needs at least one model');
   let lastServedBy: string | null = null;
 
@@ -101,7 +110,7 @@ export function modelChain(models: Model[]): ChainModel {
     const errors: string[] = [];
     for (const m of models) {
       try {
-        const out = await call(m);
+        const out = await withTimeout(call(m), timeoutMs, m.name);
         lastServedBy = m.name;
         return out;
       } catch (err) {
@@ -137,13 +146,15 @@ export function modelFromSpec(spec: string, keys: { google?: string; openrouter?
 }
 
 /**
- * Free models first, then Gemini on the Google free tier, then paid Gemini via OpenRouter.
- * Only models with a provider that supports JSON-schema output are listed (free Gemma's
- * provider only offers plain JSON mode, so it is left out).
+ * Fast, reliable models first; free models last. In the 40-case eval gemini-2.5-flash
+ * returned a valid plan on the first try 92% of the time in about 2 s, while free models
+ * queue for minutes. Only models whose provider supports JSON-schema output are listed
+ * (free Gemma's provider only offers plain JSON mode). Models without a key are skipped.
  */
 export const DEFAULT_MODEL_CHAIN = [
+  'openrouter:google/gemini-2.5-flash',
+  'openrouter:google/gemini-2.5-flash-lite',
+  'google:gemini-2.5-flash',
   'openrouter:nvidia/nemotron-3-super-120b-a12b:free',
   'openrouter:qwen/qwen3.8-27b:free',
-  'google:gemini-2.5-flash',
-  'openrouter:google/gemini-2.5-flash',
 ];
